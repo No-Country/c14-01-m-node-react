@@ -1,10 +1,12 @@
 import "./App.css";
-import Navbar from "./components/Header/Navbar";
+import Categories from "./components/CategoriesNav/Categories";
+import Navbar from "./components/NavBar/Navbar";
 
 function App() {
   return (
     <>
       <Navbar />
+      <Categories />
     </>
   );
 }
