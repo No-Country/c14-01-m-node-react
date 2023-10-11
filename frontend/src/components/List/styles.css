@@ -1,0 +1,55 @@
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-property {
+  height: 385px;
+  width: 290px;
+  margin: 15px;
+  position: relative;
+}
+
+.card-top {
+  height: 290px;
+  object-fit: cover;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.position-heart {
+  position: absolute;
+  width: 24px;
+  right: 10px;
+  top: 10px;
+  z-index: 10;
+}
+
+.card-bottom {
+  line-height: 2;
+}
+
+.bottom-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bottom-description {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.bottom-price {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bottom-span {
+  font-size: 14px;
+  font-weight: 400;
+}

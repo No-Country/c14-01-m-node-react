@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Categories from "./components/CategoriesNav/Categories";
 import Navbar from "./components/NavBar/Navbar";
 import ListCategories from "./components/Filters/ListCategories";
-import ListPropertys from "./components/List/ListPropertys";
+import ListProperties from "./components/List/ListProperties";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
               element={
                 <>
                   <Categories />
-                  <ListPropertys />
+                  <ListProperties />
                 </>
               }
             />

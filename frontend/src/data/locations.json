@@ -52,7 +52,7 @@
     "categories": ["tropical", "camping"]
   },
   {
-    "id": 1,
+    "id": 5,
     "title": "Tiny home in San Martin de los Andes, Argentina",
     "description": "A Viston Tiny House, 10 minutes from downtown",
     "price": 48,
@@ -65,7 +65,7 @@
     "categories": ["farms", "lake", "trending"]
   },
   {
-    "id": 2,
+    "id": 6,
     "title": "Entire cabin in Las Vegas, Argentina",
     "description": "Mountain lodge",
     "price": 14,
@@ -78,7 +78,7 @@
     "categories": ["farms", "lake"]
   },
   {
-    "id": 3,
+    "id": 7,
     "title": "Entire place in Buenos Aires, Argentina",
     "description": "Loft in Palermo with Private Heated Pool/Jacuzzi",
     "price": 152,
@@ -91,7 +91,7 @@
     "categories": ["farms", "lake", "trending"]
   },
   {
-    "id": 4,
+    "id": 8,
     "title": "Entire cabin in Puerto Iguazú, Argentina",
     "description": "Cabañas la Quinta",
     "price": 171,
