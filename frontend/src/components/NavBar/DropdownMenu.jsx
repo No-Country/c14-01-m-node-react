@@ -1,3 +1,5 @@
+import Login from '../../components/Login';
+import Signup from '../../components/Signup';
 import Dropdown from "react-bootstrap/Dropdown";
 import "./styles.css";
 
@@ -9,6 +11,9 @@ function DropDownMenu({ children }) {
         {children}
       </Dropdown.Toggle>
       <Dropdown.Menu>
+        <Dropdown.Item><Login /></Dropdown.Item>
+        <Dropdown.Item><Signup /></Dropdown.Item>
+        <Dropdown.Divider />
         <Dropdown.Item href="#/action-1">Messages</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Notifications</Dropdown.Item>
         <Dropdown.Item href="#/action-3">Trips</Dropdown.Item>
