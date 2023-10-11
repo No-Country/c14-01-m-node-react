@@ -1,12 +1,13 @@
 import React from 'react';
-import Login from '../../components/Login';
-import Signup from '../../components/Signup';
+import Navbar from '../../components/NavBar/Navbar';
+import Categories from '../../components/CategoriesNav/Categories';
+
 
 export default function Home() {
   return (
     <>
-      <Login />
-      <Signup />
+      <Navbar />
+      <Categories />
     </>
   )
 };

@@ -10,6 +10,7 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 
 export default function Signup() {
   const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const [inputs, setInputs] = useState({ name: '', lastname: '', month: '', day: '', year: '', email: '', password: '' });
 
@@ -19,14 +20,18 @@ export default function Signup() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
     <>
-      <Button size='lg' variant="primary" onClick={handleShow}>
+      <button className={styles.button} onClick={handleShow}>
         Sign Up
-      </Button>
+      </button>
 
       <Modal show={show} centered onHide={handleClose}>
         <Modal.Header closeButton>
@@ -100,10 +105,10 @@ export default function Signup() {
                 name='password'
                 placeholder="Password"
                 aria-label="Password"
-                type='password'
+                type={showPassword ? 'text' : 'password'}
               />
             </FloatingLabel>
-            <InputGroup.Checkbox aria-label="Checkbox to show password" />
+            <InputGroup.Checkbox onClick={handleShowPassword} aria-label="Checkbox to show password" />
           </InputGroup>
           <div className="d-grid gap-2">
             <Button size='lg'>Agree and continue</Button>
