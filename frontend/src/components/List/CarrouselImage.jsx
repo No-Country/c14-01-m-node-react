@@ -7,7 +7,7 @@ function CarrouselImage({ images }) {
       {images &&
         images.map((image, i) => (
           <Carousel.Item key={i} className="card-top">
-            <img src={image} alt="image" className="card-img" />
+            <img src={image} alt="image" className="image-card" />
           </Carousel.Item>
         ))}
     </Carousel>

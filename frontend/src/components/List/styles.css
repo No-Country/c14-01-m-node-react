@@ -13,13 +13,14 @@
 .card-top {
   height: 290px;
   object-fit: cover;
+  /* border-radius: 20px; */
 }
 
-.card-img {
+.image-card {
   width: 100%;
   height: 100%;
-  border-radius: 20px;
   object-fit: cover;
+  border-radius: 15px;
 }
 
 .position-heart {
