@@ -2,7 +2,6 @@ const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 
 dotenv.config()
-
 const mongoUri = process.env.MONGO_URI
 
 mongoose.set("strictQuery" , true)
