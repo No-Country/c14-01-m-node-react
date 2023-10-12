@@ -1,11 +1,20 @@
-const mongoose = require("mongoose")
-const dotenv = require("dotenv")
+import mongoose  from "mongoose"
+import dotenv  from "dotenv"
 
 dotenv.config()
 const mongoUri = process.env.MONGO_URI
 
-mongoose.set("strictQuery" , true)
-mongoose
-    .connect(mongoUri,{userNewUrlParser : true})
-    .then(() => console.log("Base de datos conectada"))
-    .catch(err => console.log("Error :  " + err))
+const database = {
+    connect : async function(){
+        try {
+            await mongoose.connect(mongoUri)
+            console.log("DB connect")
+        } catch (error) {
+            console.log("DB error connection")
+        }
+    }
+}
+
+
+
+export default database

@@ -1,0 +1,17 @@
+### recuperar todos los usuarios
+GET http://localhost:8080/users
+
+### recuperar usuario por ID
+GET http://localhost:8080/users:id
+
+### crear un usuario
+POST http://localhost:8080/users
+Content-Type: application/json 
+
+{
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "johndoe@example.com",
+    "password": "secret",
+    "role": "propietario"
+}
