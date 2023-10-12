@@ -44,6 +44,21 @@ userRouter.put('/:_id', async (req, res) => {
   }
 })
 
+userRouter.delete('/:_id', async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const user = await userModel.findOneAndDelete(_id);
+
+    if(user) {
+      res.status(200).json(user);
+    } else {
+      res.status(404).json({message: 'usuario no encontrado'});
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener el usuario'})
+  }
+})
+
 userRouter.post("/", async (req, res) => {
   try {
     const { first_name, last_name, email, password, role } = req.body;

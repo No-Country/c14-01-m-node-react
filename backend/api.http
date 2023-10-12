@@ -2,7 +2,7 @@
 GET http://localhost:8080/users
 
 ### recuperar usuario por ID
-GET http://localhost:8080/users/652748d1ff99f28aaf9c386d
+GET http://localhost:8080/users/6527d034ced742c79407e810
 
 ### actualizar un usuario por ID
 PUT http://localhost:8080/users/652751aa0caf1c546794a893
@@ -16,14 +16,17 @@ Content-Type: application/json
     "role": "propietario"
 }
 
+### eliminar un usuario por ID
+DELETE http://localhost:8080/users/652751aa0caf1c546794a893
+
 ### crear un usuario
 POST http://localhost:8080/users
 Content-Type: application/json 
 
 {
-    "first_name": "John",
-    "last_name": "Doe",
-    "email": "johndoe@example.com",
+    "first_name": "Marcos",
+    "last_name": "Martin",
+    "email": "johnMarcos@example.com",
     "password": "secret",
     "role": "propietario"
 }
