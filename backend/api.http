@@ -2,7 +2,19 @@
 GET http://localhost:8080/users
 
 ### recuperar usuario por ID
-GET http://localhost:8080/users:id
+GET http://localhost:8080/users/652748d1ff99f28aaf9c386d
+
+### actualizar un usuario por ID
+PUT http://localhost:8080/users/652751aa0caf1c546794a893
+Content-Type: application/json
+
+{
+    "first_name": "Johni",
+    "last_name": "Doe",
+    "email": "johndoe@example.com",
+    "password": "secret",
+    "role": "propietario"
+}
 
 ### crear un usuario
 POST http://localhost:8080/users

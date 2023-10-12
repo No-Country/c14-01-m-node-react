@@ -28,6 +28,22 @@ userRouter.get("/:_id", async (req, res) => {
   }
 });
 
+userRouter.put('/:_id', async (req, res) => {
+  try {
+      const { _id } = req.params;
+
+      const updatedUser = await userModel.findByIdAndUpdate(_id, req.body, { new: true })
+
+      if (updatedUser) {
+        res.status(200).json({message : 'Usuario actualizado con exito', user: updatedUser})
+      } else {
+        res.status(404).json({ mensaje: 'Usuario no encontrado' });
+      }
+  } catch (error) {
+    
+  }
+})
+
 userRouter.post("/", async (req, res) => {
   try {
     const { first_name, last_name, email, password, role } = req.body;
