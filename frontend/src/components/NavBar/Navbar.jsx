@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 import "./styles.css";
 
@@ -7,7 +7,9 @@ const Navbar = () => {
     <>
       <div className="nav-air">
         <div className="logo-air">
-          <img src="Logo.png" alt="" />
+          <Link to="/">
+            <img src="Logo.png" alt="" />
+          </Link>
         </div>
         <div className="search-air">
           <div>Anywhere</div>
