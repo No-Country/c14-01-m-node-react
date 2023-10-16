@@ -1,6 +1,9 @@
 import userModel from "../models/usermodel.js";
 
-class User {
+export default class User {
+    constructor (){
+        
+    }
 
 
     getUsers = async ()=>{
@@ -78,5 +81,3 @@ class User {
 
 
 }
-
-export const user = new User();
