@@ -55,3 +55,21 @@ export const login = async (req, res) => {
       
     }
   }
+
+export const logout = async (req, res) => {
+    try {
+        /* const { jwtCookie: token } = req.cookies
+        const Token = jwt.verify(token, JWT_SECRET, {
+        ignoreExpiration: true,
+      }); */
+
+    return res
+        .clearCookie(COOKIE_NAME)
+        .send({ status: 'success', message: 'Logout successful!' })
+
+    } catch (error) {
+        console.log(error);
+        return res.status(404).send({ status: 'error', error: 'Log out failed'})
+    }
+
+}

@@ -2,7 +2,8 @@ import express from 'express';
 import database from '../database/database.js';
 import userRouter from "../routes/user.router.js"
 import passport from 'passport';
-import initializePassport from "../controllers/passport.js"
+import initializePassport from "../controllers/passport.js";
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
