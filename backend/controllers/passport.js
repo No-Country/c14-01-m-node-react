@@ -8,12 +8,28 @@ import jwt from "passport-jwt";
 import cookieParser from "cookie-parser";
 import { createHash, isValidPassword } from "../utils/utils.js";
 
+import config from "../utils/config.js";
+const {JWT_SECRET, COOKIE_NAME} = config;
+
 const LocalStrategy = local.Strategy;
 const JwtStrategy = jwt.Strategy;
 const ExtractJwt = jwt.ExtractJwt;
 
+const cookieExtractor = (req) => {
+    let token = null;
+    if (req && req.cookies){
+        token = req.cookies[COOKIE_NAME]
+    }
+    return token;
+}
+
+const jwtOptions = {
+    secretOrKey: JWT_SECRET,
+    jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
+} 
 
 const initializePassport = () => {
+    
     passport.use(
         "register",
         new LocalStrategy( {passReqToCallback : true, usernameField: "email"}, async (req,username, password, done) => {
@@ -50,6 +66,17 @@ const initializePassport = () => {
                 throw new Error (error);
             }
         })
+        );
+
+        passport.use(
+            "jwt",
+            new JwtStrategy(jwtOptions, async(jwt_payload, done) => {
+                try {
+                    return done(null, jwt_payload)
+                } catch (error) {
+                    return done(error)
+                }
+            })
         );
 
         passport.serializeUser((user, done) => {
