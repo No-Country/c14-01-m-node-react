@@ -16,9 +16,10 @@ app.use(passport.initialize());
 
 app.use("/api/users", userRouter)
 
+
+
 const httpServer = app.listen( process.env.PORT , () => {
     console.log("Listening on port 8080");
   });
-
 
 database.connect()

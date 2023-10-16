@@ -1,13 +1,9 @@
-import React from 'react';
-import Navbar from '../../components/NavBar/Navbar';
-import Categories from '../../components/CategoriesNav/Categories';
-
+import Navbar from "../../components/NavBar/Navbar";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <Categories />
     </>
-  )
-};
+  );
+}
