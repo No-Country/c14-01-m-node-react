@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import icons from "../../assets/icons";
 import IconsCategories from "./IconsCategories";
 
@@ -7,9 +6,7 @@ const Categories = () => {
     <div className="container-categories-general">
       <div className="container-categories">
         {icons.map((item) => (
-          <Link key={item.name} to={`/filters/${item.name}`}>
-            <IconsCategories icon={item} />
-          </Link>
+          <IconsCategories key={item.name} icon={item} />
         ))}
       </div>
       <div className="filters">
