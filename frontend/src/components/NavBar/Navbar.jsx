@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 import "./styles.css";
 
@@ -33,7 +33,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <Outlet />
     </>
   );
 };
