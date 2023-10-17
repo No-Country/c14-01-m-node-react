@@ -9,7 +9,9 @@ const useFilters = () => {
         product.price > filters.minPrice &&
         product.price < filters.maxPrice &&
         (filters.categories == "all" ||
-          product.categories.includes(filters.categories))
+          product.categories.includes(filters.categories)) &&
+        (filters.amenities.length == 0 ||
+          product.amenities.some((item) => filters.amenities.includes(item)))
     );
   };
   return { filters, setFilters, getFilteredProducts };
