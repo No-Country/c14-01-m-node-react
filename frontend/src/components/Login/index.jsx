@@ -1,16 +1,36 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import styles from './login.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn } from '../../redux/actions/authActions';
 
 export default function Login() {
   const [show, setShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
-
   const [inputs, setInputs] = useState({ email: '', password: '' });
+
+  const { status } = useSelector(state => state?.user);
+
+  useEffect(() => {
+    if (status === 'success') setShow(false);
+  }, [status]);
+
+  const dispatch = useDispatch();
+
+  const fetchLogIn = useCallback(() => {
+    dispatch(logIn(inputs));
+  });
+
+  const validateEmail = (email) => {
+    const RegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const validity = RegEx.test(email);
+    setValidEmail(validity);
+    return validity;
+  };
 
   const handleInputChange = (event) => {
     const name = event.target.name;
@@ -25,13 +45,11 @@ export default function Login() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const validateEmail = (email) => {
-    const RegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    return RegEx.test(email)
-  };
-
-  const handleSubmit = () => {
-    setValidEmail(validateEmail(inputs.email));
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const valid = validateEmail(inputs.email);
+    setValidEmail(valid);
+    if (valid) fetchLogIn();
   };
 
   return (
