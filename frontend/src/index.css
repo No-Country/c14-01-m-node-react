@@ -67,3 +67,21 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.btn-primary {
+  --bs-btn-bg: #ff385c !important;
+  --bs-btn-border-color: #ff385c !important;
+  --bs-btn-color: white !important;
+}
+
+.btn-primary:active {
+  --bs-btn-active-bg: #e61e4d  ;
+  --bs-btn-active-border-color: #e61e4d  ;
+  --bs-btn-active-color: white;
+}
+
+.btn-primary:hover {
+  --bs-btn-hover-bg: #e31c5f ;
+  --bs-btn-hover-border-color: #e31c5f ;
+  --bs-btn-hover-color: white;
+}

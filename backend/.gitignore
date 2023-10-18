@@ -1,5 +1,8 @@
-# dependencies
+## dependencias
 /node_modules
 
-#misc
+## entorno
 .env
+
+## ficheros
+/frontend
