@@ -1,4 +1,7 @@
+import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
@@ -37,7 +40,11 @@ const home = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <FiltersProvider>
-    <RouterProvider router={home} />
-  </FiltersProvider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <FiltersProvider>
+        <RouterProvider router={home} />
+      </FiltersProvider>
+    </Provider>
+  </React.StrictMode>
 );

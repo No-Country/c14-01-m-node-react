@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Login from '../../components/Login';
 import Signup from '../../components/Signup';
 import Dropdown from "react-bootstrap/Dropdown";
@@ -5,14 +6,23 @@ import "./styles.css";
 
 // eslint-disable-next-line react/prop-types
 function DropDownMenu({ children }) {
+  const [showLogIn, setShowLogIn] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
+
+  const handleShowLogIn = () => setShowLogIn(true);
+  const handleCloseLogIn = () => setShowLogIn(false);
+
+  const handleShowSignUp = () => setShowSignUp(true);
+  const handleCloseSignUp = () => setShowSignUp(false);
+
   return (
     <Dropdown id="dropdown-basic-button">
       <Dropdown.Toggle variant={null} id="dropdown-basic">
         {children}
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item><Login /></Dropdown.Item>
-        <Dropdown.Item><Signup /></Dropdown.Item>
+        <Dropdown.Item onClick={handleShowLogIn}><Login show={showLogIn} setShow={setShowLogIn} handleClose={handleCloseLogIn} /></Dropdown.Item>
+        <Dropdown.Item onClick={handleShowSignUp}><Signup show={showSignUp} setShow={setShowSignUp} handleClose={handleCloseSignUp} /></Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item href="#/action-1">Messages</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Notifications</Dropdown.Item>
