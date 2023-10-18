@@ -75,11 +75,11 @@
       "https://a0.muscache.com/im/pictures/4d368629-d071-47b0-99d0-a143bed88b9d.jpg?im_w=1440",
       "https://a0.muscache.com/im/pictures/4d368629-d071-47b0-99d0-a143bed88b9d.jpg?im_w=1440"
     ],
+<<<<<<< HEAD
     "categories": ["tropical", "camping"],
     "amenities": ["washer", "air conditioning", "kitchen"]
-  },
-  {
-    "id": 5,
+    "categories": ["tropical", "camping"]
+>>>>>>> jose-backE
     "title": "Tiny home in San Martin de los Andes, Argentina",
     "description": "A Viston Tiny House, 10 minutes from downtown",
     "price": 48,
