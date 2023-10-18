@@ -1,14 +1,26 @@
-import { Link } from "react-router-dom";
 import icons from "../../assets/icons";
+import useFilters from "../../utils/useFilters";
 import IconsCategories from "./IconsCategories";
+
 const Categories = () => {
+  const { filters, setFilters } = useFilters();
+
+  const handleClick = (category) => {
+    console.log(category);
+    setFilters((prev) => ({
+      ...prev,
+      categories: category,
+    }));
+  };
+
+  console.log(filters);
   return (
     <div className="container-categories-general">
       <div className="container-categories">
         {icons.map((item) => (
-          <Link key={item.name} to={`filters/${item.name}`}>
+          <div key={item.name} onClick={() => handleClick(item.name)}>
             <IconsCategories icon={item} />
-          </Link>
+          </div>
         ))}
       </div>
       <div className="filters">
