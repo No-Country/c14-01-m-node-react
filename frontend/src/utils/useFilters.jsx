@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { FiltersContext } from "../context/FilterContext";
+import products from "../data/locations.json";
 
 const useFilters = () => {
   const { filters, setFilters } = useContext(FiltersContext);
-  const getFilteredProducts = (products) => {
+  const getFilteredProducts = () => {
     return products.filter(
       (product) =>
         product.price > filters.minPrice &&
@@ -14,7 +15,10 @@ const useFilters = () => {
           product.amenities.some((item) => filters.amenities.includes(item)))
     );
   };
-  return { filters, setFilters, getFilteredProducts };
+  const getFilterByLocation = (id) => {
+    return products.find((product) => product.id == id);
+  };
+  return { filters, setFilters, getFilteredProducts, getFilterByLocation };
 };
 
 export default useFilters;
