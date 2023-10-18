@@ -1,0 +1,31 @@
+.form-control {
+  padding: 10px;
+  border-color: #000 !important;
+}
+
+.form-floating {
+  font-size: 8px;
+  padding: 5px;
+  width: 120px;
+}
+
+input[type="range"] {
+  width: 300px;
+  height: 35px;
+  cursor: ew-resize;
+  background: #434343;
+  color: #000;
+}
+
+.amenities {
+  display: flex;
+  flex-wrap: wrap;
+}
+.amenities-item {
+  display: flex;
+  width: 30%;
+  gap: 15px;
+}
+.amenities-item input {
+  padding: 5px;
+}
