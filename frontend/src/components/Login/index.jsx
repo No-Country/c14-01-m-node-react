@@ -10,14 +10,16 @@ import { logIn } from '../../redux/actions/authActions';
 export default function Login() {
   const [show, setShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
   const [inputs, setInputs] = useState({ email: '', password: '' });
 
-  const { status } = useSelector(state => state?.user);
+  const { isAuthenticated, user } = useSelector(state => state?.auth);
 
   useEffect(() => {
-    if (status === 'success') setShow(false);
-  }, [status]);
+    if (isAuthenticated) setShow(false);
+    if (user.status === 'error') setError(true);
+  }, [user.status]);
 
   const dispatch = useDispatch();
 
@@ -42,7 +44,9 @@ export default function Login() {
     setShowPassword(!showPassword);
   };
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+  }
   const handleShow = () => setShow(true);
 
   const handleSubmit = (event) => {
@@ -85,8 +89,10 @@ export default function Login() {
                   aria-label="Password"
                   type={showPassword ? 'text' : 'password'}
                   maxLength={50}
+                  isInvalid={error}
                 />
                 <InputGroup.Checkbox onClick={handleShowPassword} aria-label="Checkbox to show password" />
+                <Form.Control.Feedback type="invalid">  Username or password are invalid.</Form.Control.Feedback>
               </InputGroup>
               <div className="d-grid gap-2">
                 <Button variant='primary' size='lg' type='submit' onClick={handleSubmit}>Continue</Button>

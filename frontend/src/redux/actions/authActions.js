@@ -1,10 +1,10 @@
 import { SIGN_UP, LOG_IN, LOG_OUT } from './types';
 
-const BASE_URL = 'http://localhost:8080/api'
+const BASE_URL = 'http://localhost:8080/api/auth'
 
 export const signUp = (inputs) => {
   return (dispatch) => {
-    return fetch(`${BASE_URL}/users/register`,
+    return fetch(`${BASE_URL}/register`,
       {
         method: "POST",
         headers: { 'Content-Type': 'application/JSON' },
@@ -18,7 +18,7 @@ export const signUp = (inputs) => {
 
 export const logIn = (inputs) => {
   return (dispatch) => {
-    return fetch(`${BASE_URL}/users/login`,
+    return fetch(`${BASE_URL}/login`,
       {
         method: "POST",
         headers: { 'Content-Type': 'application/JSON' },
@@ -32,11 +32,11 @@ export const logIn = (inputs) => {
 
 export const logOut = () => {
   return (dispatch) => {
-    return fetch(`${BASE_URL}/users/login`,
+    return fetch(`${BASE_URL}/logout`,
       {
         method: "GET",
         headers: { 'Content-Type': 'application/JSON' },
-        body: JSON.stringify(inputs)
+        body: JSON.stringify()
       })
       .then(response => response.json())
       .then(obj =>
