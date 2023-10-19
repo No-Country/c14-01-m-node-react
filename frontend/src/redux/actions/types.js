@@ -1,3 +1,6 @@
 export const SIGN_UP = 'SIGN_UP';
 export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
+
+export const INCREASE_GUESTS = 'INCREASE_GUESTS';
+export const DECREASE_GUESTS = 'DECREASE_GUESTS';

@@ -32,11 +32,11 @@ export const logIn = (inputs) => {
 
 export const logOut = () => {
   return (dispatch) => {
-    return fetch(`${BASE_URL}/users/login`,
+    return fetch(`${BASE_URL}/users/logout`,
       {
         method: "GET",
         headers: { 'Content-Type': 'application/JSON' },
-        body: JSON.stringify(inputs)
+        body: JSON.stringify()
       })
       .then(response => response.json())
       .then(obj =>

@@ -15,9 +15,9 @@ export default function Signup() {
   const [show, setShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
-  const [inputs, setInputs] = useState({ name: '', lastname: '', month: '', day: '', year: '', email: '', password: '', country: '' });
+  const [inputs, setInputs] = useState({ first_name: '', last_name: '', month: '', day: '', year: '', email: '', password: '', location: '' });
 
-  const { status } = useSelector(state => state?.user)
+  const { status } = useSelector(state => state?.auth?.user)
 
   useEffect(() => {
     if (status === 'success') setShow(false);
