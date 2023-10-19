@@ -15,9 +15,9 @@ export default function Signup() {
   const [show, setShow] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
-  const [inputs, setInputs] = useState({ name: '', lastname: '', month: '', day: '', year: '', email: '', password: '', country: '' });
+  const [inputs, setInputs] = useState({ first_name: '', last_name: '', month: '', day: '', year: '', email: '', password: '', location: '' });
 
-  const { status } = useSelector(state => state?.user)
+  const { status } = useSelector(state => state?.auth?.user)
 
   useEffect(() => {
     if (status === 'success') setShow(false);
@@ -76,7 +76,7 @@ export default function Signup() {
               >
                 <Form.Control
                   onChange={handleInputChange}
-                  name='name'
+                  name='first_name'
                   placeholder="First name"
                   aria-label="First name"
                   maxLength={50}
@@ -90,7 +90,7 @@ export default function Signup() {
               >
                 <Form.Control
                   onChange={handleInputChange}
-                  name='lastname'
+                  name='last_name'
                   placeholder="Last name"
                   aria-label="Last name"
                   maxLength={50}
@@ -98,7 +98,7 @@ export default function Signup() {
               </FloatingLabel>
             </InputGroup>
             <InputGroup size='lg' className="mb-3">
-              <Form.Select defaultValue={'Country'} name='country' onChange={handleInputChange}>
+              <Form.Select defaultValue={'Country'} name='location' onChange={handleInputChange}>
                 <option disabled key='country'>Country</option>
                 {countries.map((country, index) => <option key={index}>{country}</option>)}
               </Form.Select>
