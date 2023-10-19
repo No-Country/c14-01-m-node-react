@@ -1,7 +1,7 @@
 it('TC003: Verificar el correcto registro de usuarios, con todos los datos válidos', () => {
     cy.request({
       method: 'GET',
-      url: 'http://localhost:5173/users',
+      url: 'http://localhost:5173/api/users',
     }).then((response) => {
       // Verifica que la solicitud se haya realizado con éxito
       expect(response.status).to.eq(200);

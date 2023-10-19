@@ -12,13 +12,13 @@ describe('Auth Module', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173/')
   })
-  it('TC003: Verificar el correcto registro de usuarios, con todos los datos validos', () => {
+  it.only('TC003: Verificar el correcto registro de usuarios, con todos los datos validos', () => {
     
     cy.get('#dropdown-basic-button').click().should('be.visible')
     cy.get('#dropdown-basic-button > div > a:nth-child(2) > button').contains("Sign Up").click()
-    cy.get('input[name="name"]').type(userInfo.firstName)
-    cy.get('input[name="lastname"]').type(userInfo.lastName)
-    cy.get('select[name="country"]').select(userInfo.country)
+    cy.get('input[name="first_name"]').type(userInfo.firstName)
+    cy.get('input[name="last_name"]').type(userInfo.lastName)
+    cy.get('select[name="location"]').select(userInfo.country)
     cy.get('select[name="month"]').select(userInfo.birthdayMonth)
     cy.get('select[name="day"]').select(userInfo.birthdayDay)
     cy.get('select[name="year"]').select(userInfo.birthdayYear)
