@@ -9,8 +9,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
+    location : String,
     password : String,
-    age: Number,
+    birthday: Date,
     role : {
         type: String,
         enum: ["inquilino", "propietario"],

@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const accommodationsCollection = "accommodations";
+const houseCollection = "houseCollection";
 
-const accommodationSchema = new mongoose.Schema({
+const houseSchema = new mongoose.Schema({
     title : String,
     description : String,
     price : Number,
@@ -18,6 +18,6 @@ const accommodationSchema = new mongoose.Schema({
     type : String,
 })
 
-const accommodationModel = mongoose.model(accommodationsCollection, accommodationSchema);
+const houseModel = mongoose.model(houseCollection, houseSchema);
 
-export default accommodationModel;
+export default houseModel
