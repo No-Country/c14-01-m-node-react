@@ -13,7 +13,7 @@ const houseSchema = new mongoose.Schema({
     categories : [String],
     amenities : [String],
     assesment : String,
-    ownerInformation : String,
+    ownerInformation : [String],
     details : String,
     type : String,
 })
