@@ -1,4 +1,4 @@
-import userModel from "../models/usermodel.js";
+import userModel from "../models/userModel.js";
 import userManager from "../mongo/users.mongo.js";
 import { UserDTO } from "../mongo/dtos/user.dto.js";
 import { isValidPassword } from "../utils/utils.js";

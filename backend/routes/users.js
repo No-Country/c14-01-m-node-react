@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { allUser, usersById, updateUser, deleteUser, createUser } from "../controllers/user.controllers.js";
+import { allUser, usersById, updateUser, deleteUser, createUser, usersByEmail } from "../controllers/user.controllers.js";
 
 export const userRouter = Router();
 
 userRouter.get("/", allUser);
 
 userRouter.get("/:_id", usersById);
+
+userRouter.get("/:email", usersByEmail);
 
 userRouter.put('/:_id', updateUser)
 

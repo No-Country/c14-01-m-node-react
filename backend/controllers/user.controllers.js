@@ -1,4 +1,7 @@
-import userModel from "../models/usermodel.js";
+import userModel from "../models/userModel.js";
+import UserManager from "../mongo/users.mongo.js";
+
+const usermanager = new UserManager()
 
 export const allUser = async (req, res) => {
   try {
@@ -13,6 +16,7 @@ export const allUser = async (req, res) => {
 export const usersById = async (req, res) => {
   try {
     const { _id } = req.params; // Obtiene el ID
+    console.log(_id);
     const user = await userModel.findById(_id);
 
     if (user) {
@@ -22,6 +26,25 @@ export const usersById = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: "Error al obtener el usuario" });
+  }
+};
+
+export const usersByEmail = async (req, res) => {
+  try {
+    const { email } = req.params;
+    console.log(email);
+
+    const user = await userModel.findOne({ email:email });
+    console.log(user);
+
+    if (user) {
+      res.status(200).send({ message: "Usuario encontrado", user: user });
+    } else {
+      res.status(404).send({ message: "Usuario no encontrado" });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ message: "usuario no encontardo", error: error });
   }
 };
 
@@ -65,6 +88,8 @@ export const createUser = async (req, res) => {
     const newUser = new userModel({
       first_name,
       last_name,
+      birthday,
+      location,
       email,
       password,
       role,
