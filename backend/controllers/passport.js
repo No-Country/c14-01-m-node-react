@@ -1,6 +1,6 @@
 import User from "../mongo/users.mongo.js";
-import userModel from "../models/usermodel.js";
 import cartModel from "../models/cartModel.js";
+import userModel from "../models/userModel.js";
 
 import passport from "passport";
 import local from "passport-local";
