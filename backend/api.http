@@ -1,0 +1,75 @@
+### recuperar todos los usuarios
+GET http://localhost:8080/api/users
+
+### recuperar usuario por ID
+GET http://localhost:8080/api/users/652f1344f7994593b3592cb5
+
+
+### actualizar un usuario por ID
+PUT http://localhost:8080/api/users/652751aa0caf1c546794a893
+Content-Type: application/json
+
+{
+    "first_name": "Johni",
+    "last_name": "Doe",
+    "email": "johndoe@example.com",
+    "password": "secret",
+    "role": "propietario"
+}
+
+### eliminar un usuario por ID
+DELETE http://localhost:8080/api/users/652751aa0caf1c546794a893
+
+### crear un usuario
+POST http://localhost:8080/api/users
+Content-Type: application/json 
+
+{
+    "first_name": "Marcos",
+    "last_name": "Martin",
+    "email": "johnMarcos@example.com",
+    "password": "secret",
+    "role": "propietario"
+}
+
+### <<-- DEBAJO EMPIEZAN LAS PETICIONES PARA LAS VIVIENDAS -->> ###
+
+### crear una vivienda 
+POST http://localhost:8080/api/places
+Content-Type: application/json
+
+
+{
+  "title": "Mi Casa",
+  "description": "Una hermosa casa en la playa",
+  "price": 20000,
+  "adress": "123 Calle Falsa",
+  "assesment": "Excelente",
+  "ownerInformation": "Marge Simpson",
+  "details": "3 habitaciones, piscina",
+  "type": "Casa"
+}
+
+### recuperar todas las viviendas
+GET http://localhost:8080/api/places
+
+### recuperar la vivienda por id
+GET http://localhost:8080/api/places/652ef5cbf0ca5d78e594f0b8
+
+### actualizar una vivienda por id 
+PUT http://localhost:8080/api/places/652ef5cbf0ca5d78e594f0b8
+Content-Type: application/json
+
+{
+  "title": "Nuestra casa",
+  "description": "Una hermosa casa en la playa",
+  "price": 100000,
+  "adress": "123 Main Street",
+  "assesment": "Excelente",
+  "ownerInformation": "Jose Pérez",
+  "details": "3 habitaciones, piscina",
+  "type": "Casa"
+}
+
+### eliminar vivienda por id
+DELETE http://localhost:8080/api/places/652ef5cbf0ca5d78e594f0b8
