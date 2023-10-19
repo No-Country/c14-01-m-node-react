@@ -76,7 +76,7 @@ export default function Signup() {
               >
                 <Form.Control
                   onChange={handleInputChange}
-                  name='name'
+                  name='first_name'
                   placeholder="First name"
                   aria-label="First name"
                   maxLength={50}
@@ -90,7 +90,7 @@ export default function Signup() {
               >
                 <Form.Control
                   onChange={handleInputChange}
-                  name='lastname'
+                  name='last_name'
                   placeholder="Last name"
                   aria-label="Last name"
                   maxLength={50}
@@ -98,7 +98,7 @@ export default function Signup() {
               </FloatingLabel>
             </InputGroup>
             <InputGroup size='lg' className="mb-3">
-              <Form.Select defaultValue={'Country'} name='country' onChange={handleInputChange}>
+              <Form.Select defaultValue={'Country'} name='location' onChange={handleInputChange}>
                 <option disabled key='country'>Country</option>
                 {countries.map((country, index) => <option key={index}>{country}</option>)}
               </Form.Select>
