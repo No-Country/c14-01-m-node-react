@@ -9,9 +9,9 @@ const PropertyDetail = () => {
   const { getFilterByLocation } = useFilters();
   const params = useParams();
   const { id } = params;
-  console.log(id);
+
   const location = getFilterByLocation(id);
-  console.log(location);
+
   return (
     <div className="container-detail-main">
       <div className="container-detail">

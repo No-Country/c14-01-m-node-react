@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import getLocations from "../utils/getLocations";
 
 export const FiltersContext = createContext();
 
@@ -11,8 +12,24 @@ export function FiltersProvider({ children }) {
     amenities: [],
     propertyType: "any",
   });
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getLocations.all();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error al obtener datos del servidor:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-    <FiltersContext.Provider value={{ filters, setFilters }}>
+    <FiltersContext.Provider value={{ filters, setFilters, products }}>
       {children}
     </FiltersContext.Provider>
   );
