@@ -5,7 +5,7 @@ import userModel from "../models/userModel.js";
 import passport from "passport";
 import local from "passport-local";
 import jwt from "passport-jwt";
-import cookieParser from "cookie-parser";
+/* import cookieParser from "cookie-parser"; */
 import { createHash, isValidPassword } from "../utils/utils.js";
 
 import config from "../utils/config.js";

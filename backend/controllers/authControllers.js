@@ -46,8 +46,8 @@ export const login = async (req, res) => {
           const token = jwt.sign(jwtUser,JWT_SECRET, {expiresIn: "24h"})
   
           return res
-          .cookie(COOKIE_NAME, token, {httpOnly: true})
-          .send({status:"success", message:"Logged in"})
+          /* .cookie(COOKIE_NAME, token, {httpOnly: true}) */
+          .send({status:"success", message:"Logged in", token: token})
   
     } catch (error) {
         console.log(error);
@@ -64,7 +64,7 @@ export const logout = async (req, res) => {
       }); */
 
     return res
-        .clearCookie(COOKIE_NAME)
+        /* .clearCookie(COOKIE_NAME) */
         .send({ status: 'success', message: 'Logout successful!' })
 
     } catch (error) {
