@@ -1,11 +1,11 @@
 const userInfo = {
-  firstName: "Juan",
+  firstName: "Marcelo",
   lastName: "Gomez",
   country: "Argentina",
   birthdayMonth: "Jun",
   birthdayDay: "10",
   birthdayYear: "1976",
-  email: "juangomez@hotmail.com",
+  email: "marcelogomez@hotmail.com",
   password: "12345678",
 }
 
