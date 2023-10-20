@@ -1,12 +1,12 @@
 describe('Auth Module', () => {
   const userInfo = {
-    firstName: "Marcelo",
-    lastName: "Gereniere",
+    firstName: "Juan",
+    lastName: "Gomez",
     country: "Argentina",
     birthdayMonth: "Jun",
     birthdayDay: "10",
     birthdayYear: "1976",
-    email: "marcelogereniere@hotmail.com",
+    email: "juangomez@hotmail.com",
     password: "12345678",
   }
   beforeEach(() => {
@@ -26,7 +26,20 @@ describe('Auth Module', () => {
     cy.get('input[name="password"]').type(userInfo.password)
     cy.get('.d-grid > .btn').contains("Agree and continue").should('be.visible').click()
     cy.wait(1000)
-
+    cy.request({
+      method: 'GET',
+      url: 'http://localhost:5173/api/users',
+      body: {
+        email: "user",
+    }
+    }).then((response) => {
+      // Verificar que la solicitud haya tenido éxito (código de respuesta 200)
+      expect(response.status).to.eq(200);
+      
+      // Verificar que el usuario se haya encontrado en la respuesta
+      expect(response.body.user.email).to.eq(userInfo.email);
+    });
+    
   })
   it('TC008: Verificar el correcto inicio de sesion con todos los daos validos', () => {
     cy.get('#dropdown-basic-button').click().should('be.visible')

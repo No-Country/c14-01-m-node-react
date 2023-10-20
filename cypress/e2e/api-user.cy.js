@@ -1,25 +1,28 @@
-it('TC003: Verificar el correcto registro de usuarios, con todos los datos válidos', () => {
-    cy.request({
-      method: 'GET',
-      url: 'http://localhost:5173/api/users',
-    }).then((response) => {
-      // Verifica que la solicitud se haya realizado con éxito
-      expect(response.status).to.eq(200);
+const userInfo = {
+  firstName: "Juan",
+  lastName: "Gomez",
+  country: "Argentina",
+  birthdayMonth: "Jun",
+  birthdayDay: "10",
+  birthdayYear: "1976",
+  email: "juangomez@hotmail.com",
+  password: "12345678",
+}
+
+it.only('TC003: Verificar el correcto registro de usuarios, con todos los datos válidos', () => {
+    
+  // ... (código anterior para llenar el formulario)
+
+  cy.wait(1000);
   
-      // Correo electrónico que estás buscando
-      const userEmail = 'marcelogereniere@hotmail.com';
-  
-      // Busca el usuario con el correo electrónico específico en la respuesta
-      const userWithEmail = response.body.find((user) => user.email === userEmail);
-  
-      // Verifica que al menos un usuario tenga el correo electrónico especificado
-      expect(userWithEmail).to.exist;
-  
-      // Accede al atributo 'email' del usuario encontrado
-      const email = userWithEmail.email;
-  
-      // Verifica que el correo electrónico sea igual a 'marcelogereniere@hotmail.com'
-      expect(email).to.equal('marcelogereniere@hotmail.com');
-    });
+  cy.request({
+    method: 'GET',
+    url: `http://localhost:5173/api/users/`,
+  }).then((response) => {
+    // Verificar que la solicitud haya tenido éxito (código de respuesta 200)
+    expect(response.status).to.eq(200);
+
+    // Verificar que el usuario se haya encontrado en la respuesta
+    expect(response.body.email).to.eq(userInfo.email);
   });
-  
+});
