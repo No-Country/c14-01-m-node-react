@@ -17,15 +17,16 @@ export default function Signup() {
   const [validEmail, setValidEmail] = useState(true);
   const [inputs, setInputs] = useState({ first_name: '', last_name: '', month: '', day: '', year: '', email: '', password: '', location: '' });
 
-  const { status } = useSelector(state => state?.auth?.user)
+  const { isAuthenticated, user } = useSelector(state => state?.auth);
 
   useEffect(() => {
-    if (status === 'success') setShow(false);
-  }, [status]);
+    if (isAuthenticated) setShow(false);
+  }, [isAuthenticated]);
 
   const dispatch = useDispatch();
 
   const fetchSignUp = useCallback(() => {
+    inputs.birthday = new Date(inputs.year, months.findIndex(month => month === inputs.month), inputs.day);
     dispatch(signUp(inputs));
   });
 

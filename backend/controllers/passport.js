@@ -34,7 +34,7 @@ const initializePassport = () => {
         "register",
         new LocalStrategy( {passReqToCallback : true, usernameField: "email"}, async (req,username, password, done) => {
             try {
-                const {first_name, last_name,email, age} = req.body;
+                const {first_name, last_name,email,location, birthday, age} = req.body;
                 let {role} = req.body;
 
                 let user = await userModel.findOne({email:username});
@@ -50,6 +50,8 @@ const initializePassport = () => {
                     first_name,
                     last_name,
                     email,
+                    location,
+                    birthday,
                     age,
                     password: createHash(password),
                     role : "inquilino",
