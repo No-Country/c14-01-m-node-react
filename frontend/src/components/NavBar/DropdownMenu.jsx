@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Login from '../../components/Login';
 import Signup from '../../components/Signup';
@@ -8,6 +8,11 @@ import "./styles.css";
 
 // eslint-disable-next-line react/prop-types
 function DropDownMenu({ children }) {
+  const [token, setToken] = useState(JSON.parse(localStorage.getItem('auth_token')));
+
+  const handleLogout = () => {
+    setToken(null)
+  };
 
   const { isAuthenticated } = useSelector((state) => state?.auth);
 
@@ -17,7 +22,7 @@ function DropDownMenu({ children }) {
         {children}
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        {isAuthenticated ? <Dropdown.Item><Logout /></Dropdown.Item> :
+        {(token || isAuthenticated) ? <Dropdown.Item><Logout handleLogout={handleLogout} /></Dropdown.Item> :
           <><Dropdown.Item><Login /></Dropdown.Item>
             <Dropdown.Item><Signup /></Dropdown.Item></>}
         <Dropdown.Divider />
