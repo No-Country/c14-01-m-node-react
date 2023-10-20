@@ -7,7 +7,7 @@ userRouter.get("/", allUser);
 
 userRouter.get("/:_id", usersById);
 
-userRouter.get("/:email", usersByEmail);
+userRouter.get("/email/:email", usersByEmail);
 
 userRouter.put('/:_id', updateUser)
 
