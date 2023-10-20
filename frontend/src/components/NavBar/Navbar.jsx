@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 import "./styles.css";
+import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { FiltersContext } from "../../context/FilterContext";
 
 const Navbar = () => {
+  const { isAuthenticated } = useSelector((state) => state?.auth);
+  const { userLogged } = useContext(FiltersContext);
+  console.log("userLogged", userLogged, "is Authenticated", isAuthenticated);
   return (
     <>
       <div className="nav-air">
@@ -28,7 +34,13 @@ const Navbar = () => {
           <div className="dropdown-air">
             <DropdownMenu className="dropdown-air">
               <img src="/icons/hamburguer.png" alt="" />
-              <img src="/icons/profile.png" alt="" />
+              {isAuthenticated && userLogged ? (
+                <span className="logged-user">
+                  {userLogged.substring(0, 1)}
+                </span>
+              ) : (
+                <img src="/icons/profile.png" alt="" />
+              )}
             </DropdownMenu>
           </div>
         </div>
