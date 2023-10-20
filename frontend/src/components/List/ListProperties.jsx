@@ -10,7 +10,7 @@ const ListProperties = () => {
     <div className="container-cards">
       {locationsFiltered ? (
         locationsFiltered.map((item) => (
-          <Link key={item.id} to={`/filter/${item.id}`}>
+          <Link key={item._id} to={`/filter/${item._id}`}>
             <CardProperty location={item} />
           </Link>
         ))
