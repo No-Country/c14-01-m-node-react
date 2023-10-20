@@ -1,25 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { FiltersContext } from "../context/FilterContext";
-// import products from "../data/locations.json";
-import getLocations from "./getLocations";
 
 const useFilters = () => {
   const { filters, setFilters, products } = useContext(FiltersContext);
-
-  // useEffect(() => {
-  //   // Realizar la carga inicial de datos al montar el componente
-  //   const fetchData = async () => {
-  //     try {
-  //       const data = await getLocations.all();
-  //       setProducts(data);
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error("Error al obtener datos del servidor:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
 
   const getFilteredProducts = () => {
     return (
