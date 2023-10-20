@@ -3,7 +3,9 @@ import styles from './logout.module.css';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/actions/authActions';
 
-export default function Logout() {
+export default function Logout(props) {
+  const { handleLogout } = props;
+
   const dispatch = useDispatch();
 
   const fetchLogOut = useCallback(() => {
@@ -12,6 +14,7 @@ export default function Logout() {
 
   const handleClick = () => {
     fetchLogOut();
+    handleLogout(null)
   };
 
   return (
