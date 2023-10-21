@@ -1,28 +1,21 @@
-const userInfo = {
-  firstName: "Marcelo",
-  lastName: "Gomez",
-  country: "Argentina",
-  birthdayMonth: "Jun",
-  birthdayDay: "10",
-  birthdayYear: "1976",
-  email: "marcelogomez@hotmail.com",
-  password: "12345678",
-}
+import userModel from "../../backend/models/userModel";
+import { userRouter } from "../../backend/routes/users";
+import { usersByEmail } from "../../backend/controllers/user.controllers";
+import { registerUser } from "../../backend/controllers/authControllers";
 
-it.only('TC003: Verificar el correcto registro de usuarios, con todos los datos válidos', () => {
-    
-  // ... (código anterior para llenar el formulario)
 
-  cy.wait(1000);
-  
-  cy.request({
-    method: 'GET',
-    url: `http://localhost:5173/api/users/`,
-  }).then((response) => {
-    // Verificar que la solicitud haya tenido éxito (código de respuesta 200)
-    expect(response.status).to.eq(200);
 
-    // Verificar que el usuario se haya encontrado en la respuesta
-    expect(response.body.email).to.eq(userInfo.email);
+describe("Users API", function () {
+  it("get a user profile by username", function () {
+    const user = { email };
+    cy.request("GET", `/api/users/${email}`).then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body.user).to.deep.equal({
+        firstName: firstName,
+        lastName: lastName,
+        avatar: avatar,
+      });
+      expect(response.body.user).not.to.have.property("balance");
+    });
   });
-});
+})
