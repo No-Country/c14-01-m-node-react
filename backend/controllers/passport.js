@@ -4,7 +4,8 @@ import userModel from "../models/userModel.js";
 
 import passport from "passport";
 import local from "passport-local";
-import jwt from "passport-jwt";
+/* import jwt from "passport-jwt";
+ */import  jwt from "jsonwebtoken";
 /* import cookieParser from "cookie-parser"; */
 import { createHash, isValidPassword } from "../utils/utils.js";
 
@@ -15,7 +16,7 @@ const LocalStrategy = local.Strategy;
 const JwtStrategy = jwt.Strategy;
 const ExtractJwt = jwt.ExtractJwt;
 
-const cookieExtractor = (req) => {
+/* const cookieExtractor = (req) => {
     let token = null;
     if (req && req.cookies){
         token = req.cookies[COOKIE_NAME]
@@ -26,7 +27,7 @@ const cookieExtractor = (req) => {
 const jwtOptions = {
     secretOrKey: JWT_SECRET,
     jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
-} 
+}  */
 
 const initializePassport = () => {
     
@@ -60,9 +61,15 @@ const initializePassport = () => {
 
                 const result = await userModel.create(newUser);
 
-                if(!result) console.log("user not created");
+                if (!result) {
+                    console.log("user not created");
+                    return done(null, false);
+                }
 
-                return done(null, result);
+                
+                const token = jwt.sign({ userId: result._id, email: result.email }, JWT_SECRET);
+
+                return done(null, { user: result, token });
 
             } catch (error) {
                 throw new Error (error);
@@ -70,7 +77,7 @@ const initializePassport = () => {
         })
         );
 
-        passport.use(
+        /* passport.use(
             "jwt",
             new JwtStrategy(jwtOptions, async(jwt_payload, done) => {
                 try {
@@ -79,7 +86,7 @@ const initializePassport = () => {
                     return done(error)
                 }
             })
-        );
+        ); */
 
         passport.serializeUser((user, done) => {
             done(null, user._id);

@@ -5,7 +5,9 @@ import { registerUser, login, logout} from "../controllers/authControllers.js";
 
 const authRouter = Router();
 
-authRouter.post("/register",passport.authenticate ("register", {session: false}), registerUser); 
+authRouter.post('/register', passport.authenticate('register', { session: false }), (req, res) => {
+    res.json({ user: req.user, token: req.user.token }), registerUser
+});
 
 authRouter.post("/login",login); 
 
