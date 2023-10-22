@@ -51,9 +51,10 @@ a {
   align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid var(--lightgrey);
-  margin-top: 70px;
+  border-top: 1px solid var(--lightgrey);
+  margin-top: 76px;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9;
+  z-index: 1;
 }

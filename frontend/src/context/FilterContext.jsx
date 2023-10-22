@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import getLocations from "../utils/getLocations";
-import getTokenToUser from "../utils/getTokenToUser";
 
 export const FiltersContext = createContext();
 
@@ -30,10 +29,6 @@ export function FiltersProvider({ children }) {
 
     fetchData();
   }, []);
-
-  // useEffect(() => {
-  //   setUserLogged(getTokenToUser.get());
-  // }, [userLogged]);
 
   return (
     <FiltersContext.Provider
