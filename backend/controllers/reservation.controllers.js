@@ -1,4 +1,8 @@
 import reservartionModel from "../models/reservationModel.js";
+import config from "../utils/config.js";
+import {transport} from "../utils/transport.js";
+
+const {EMAIL_USER} = config;
 
 export const allReservations = async (req,res) => {
     try {
@@ -36,8 +40,8 @@ export const createReservation = async (req, res) => {
 
         const sentEmail = await transport.sendMail({
             from: `${EMAIL_USER}`,
-            to: purchaser,
-            subject: "Ticket created successfully",
+            to: email,
+            subject: "Reservation created successfully!!",
             html:"aca se implementa un html con los datos de la reserva" ,
             text: "Testin email sent",
             attachments: [],
@@ -48,7 +52,7 @@ export const createReservation = async (req, res) => {
         res.status(201).json(reservationCreated);
         
     } catch (error) {
-        res.status(500).json({ error: "Error al crear la reserva" });
+        res.status(500).json({ error: "Error al crear la reserva" , error: error });
     }
 }
 
