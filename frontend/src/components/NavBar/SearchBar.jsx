@@ -2,26 +2,31 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { Calendar } from "primereact/calendar";
 import "./styles.css";
+import useFilters from "../../utils/useFilters";
 
 // eslint-disable-next-line react/prop-types
 function SearchBar({ show, setShow }) {
   // eslint-disable-next-line no-unused-vars
-  const [fullscreen, setFullscreen] = useState(true);
-  const [date, setDate] = useState(new Date());
-  const [values, setValues] = useState({
-    where: "",
-    guests: "",
-  });
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(values);
+  const { filters, setFilters } = useFilters();
+  const [fullscreen] = useState(true);
+  const [dates, setDates] = useState(new Date());
+
+  const handleChangeCalendar = (e) => {
+    setDates(e.value);
+    const checkInDate = new Date(e.value[0]);
+    const checkOutDate = new Date(e.value[1]);
+    setFilters((prev) => ({
+      ...prev,
+      checkInDate: checkInDate.toISOString(),
+      checkOutDate: checkOutDate.toISOString(),
+    }));
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({
-      ...values,
+    setFilters((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
   return (
     <>
@@ -32,26 +37,22 @@ function SearchBar({ show, setShow }) {
         className="modal-searchbar"
       >
         <Modal.Body className="modal-custom-body">
-          <form
-            className="search-custom-air"
-            onClick={() => setShow(true)}
-            onSubmit={handleSubmit}
-          >
+          <form className="search-custom-air" onClick={() => setShow(true)}>
             <div className="input-air">
               <label htmlFor="">Where</label>
               <input
                 placeholder="Search destinations"
                 className="input-where"
-                name="where"
-                value={values.where}
+                name="location"
+                value={filters.location}
                 onChange={handleChange}
               />
             </div>
             <div className="input-air">
               <label htmlFor="">CheckIn-CheckOut</label>
               <Calendar
-                value={date}
-                onChange={(e) => setDate(e.value)}
+                value={dates}
+                onChange={(e) => handleChangeCalendar(e)}
                 numberOfMonths={2}
                 selectionMode="range"
                 className="input-where"
@@ -64,13 +65,12 @@ function SearchBar({ show, setShow }) {
                 placeholder="Add guests"
                 className="input-guests"
                 name="guests"
-                value={values.guests}
+                value={filters.guests}
                 onChange={handleChange}
               />
             </div>
-            <button type="submit">
-              <img src="icons/button-search.png" alt="search-button" />
-            </button>
+
+            <img src="icons/button-search.png" alt="search-button" />
           </form>
         </Modal.Body>
       </Modal>

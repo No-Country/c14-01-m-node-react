@@ -7,15 +7,30 @@ const useFilters = () => {
   const getFilteredProducts = () => {
     return (
       products &&
-      products.filter(
-        (product) =>
-          product.price > filters.minPrice &&
-          product.price < filters.maxPrice &&
-          (filters.categories == "all" ||
-            product.categories.includes(filters.categories)) &&
-          (filters.amenities.length == 0 ||
-            product.amenities.some((item) => filters.amenities.includes(item)))
-      )
+      products.filter((product) => {
+        const priceFilter =
+          product.price > filters.minPrice && product.price < filters.maxPrice;
+        const categoryFilter =
+          filters.categories == "all" ||
+          product.categories.includes(filters.categories);
+        const locationFilter =
+          !filters.location || product.location.includes(filters.location);
+        const amenitiesFilter =
+          filters.amenities.length == 0 ||
+          product.amenities.some((item) => filters.amenities.includes(item));
+        const dateFilter =
+          !filters.checkInDate ||
+          !filters.checkOutDate ||
+          (product.initialDate <= filters.checkInDate &&
+            product.endDate >= filters.checkOutDate);
+        return (
+          priceFilter &&
+          categoryFilter &&
+          locationFilter &&
+          dateFilter &&
+          amenitiesFilter
+        );
+      })
     );
   };
   const getFilterByLocation = (id) => {

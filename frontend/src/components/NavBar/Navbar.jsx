@@ -5,11 +5,14 @@ import { useSelector } from "react-redux";
 import { useContext, useState } from "react";
 import { FiltersContext } from "../../context/FilterContext";
 import SearchBar from "./SearchBar";
+import useFilters from "../../utils/useFilters";
+import formatDateToCustomFormat from "../../utils/dateConvert";
 
 const Navbar = () => {
   const { isAuthenticated } = useSelector((state) => state?.auth);
   const { userLogged } = useContext(FiltersContext);
   const [show, setShow] = useState(false);
+  const { filters } = useFilters();
   console.log("userLogged", userLogged, "is Authenticated", isAuthenticated);
   return (
     <>
@@ -21,11 +24,19 @@ const Navbar = () => {
         </div>
         {!show ? (
           <div className="search-air" onClick={() => setShow(true)}>
-            <div>Anywhere</div>
+            <div>{filters.location ? filters.location : "Anywhere"}</div>
             <div className="light-color">|</div>
-            <div>Any Week</div>
+            <div>
+              {filters.checkInDate || filters.checkOutDate
+                ? `${formatDateToCustomFormat(
+                    filters.checkInDate
+                  )} - ${formatDateToCustomFormat(filters.checkOutDate)}`
+                : "Any Week"}
+            </div>
             <div className="light-color">|</div>
-            <div className="light-color">Addguests</div>
+            <div className="light-color">
+              {filters.guests ? filters.guests : "Addguests"}
+            </div>
             <img src="icons/button-search.png" alt="search-button" />
           </div>
         ) : null}

@@ -11,6 +11,10 @@ export function FiltersProvider({ children }) {
     categories: "all",
     amenities: [],
     propertyType: "any",
+    location: null,
+    checkInDate: null,
+    checkOutDate: null,
+    guests: 0,
   });
 
   const [products, setProducts] = useState([]);
@@ -21,6 +25,7 @@ export function FiltersProvider({ children }) {
     const fetchData = async () => {
       try {
         const data = await getLocations.all();
+        console.log(data);
         setProducts(data);
       } catch (error) {
         console.error("Error al obtener datos del servidor:", error);
