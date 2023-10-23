@@ -1,7 +1,4 @@
 import userModel from "../models/userModel.js";
-import UserManager from "../mongo/users.mongo.js";
-
-const usermanager = new UserManager()
 
 export const allUser = async (req, res) => {
   try {
