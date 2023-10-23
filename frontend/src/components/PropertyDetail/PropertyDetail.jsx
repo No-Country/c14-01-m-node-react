@@ -4,13 +4,46 @@ import useFilters from "../../utils/useFilters";
 import "./style.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import formatDateToCustomFormat from "../../utils/dateConvert";
+import { Calendar } from "primereact/calendar";
+import { useState } from "react";
 
 const PropertyDetail = () => {
-  const { getFilterByLocation } = useFilters();
+  const { filters, setFilters, getFilterByLocation } = useFilters();
   const params = useParams();
   const { id } = params;
-
   const location = getFilterByLocation(id);
+  const [dates, setDates] = useState([
+    new Date(filters.checkInDate),
+    new Date(filters.checkOutDate),
+  ]);
+  const [values, setValue] = useState({
+    location: {
+      id: id,
+      title: location.title,
+      price: location.price,
+    },
+    user: {
+      id: "",
+      name: "",
+      email: "",
+    },
+    booking: {
+      initialDate: filters.checkInDate,
+      endDate: filters.checkOutDate,
+      guests: filters.guests,
+    },
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValue((prev) => ({
+      ...prev,
+      booking: {
+        [name]: value,
+      },
+    }));
+  };
+  console.log(values);
 
   return (
     <div className="container-detail-main">
@@ -48,19 +81,29 @@ const PropertyDetail = () => {
             <Card>
               <Card.Body>
                 <Card.Title>{`$ ${location.price} USD`}</Card.Title>
-                <div className="detail-body">
+                <form className="detail-body">
                   <div>
                     <div className="input-detail">
-                      <input type="text" placeholder="Check-in" />
-                      <input type="text" placeholder="Check-out" />
+                      <Calendar
+                        value={dates}
+                        onChange={(e) => setDates(e.value)}
+                        numberOfMonths={2}
+                        selectionMode="range"
+                        className="input-detail"
+                      />
                     </div>
                     <div className="input-detail">
-                      <input type="text" placeholder="Add Guests" />
+                      <input
+                        type="text"
+                        placeholder="Add Guests"
+                        value={values.booking.guests}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
                   <Button variant="primary">Reserve</Button>
                   <div className="detail-price">You won't be charged yet</div>
-                </div>
+                </form>
               </Card.Body>
             </Card>
           </div>
