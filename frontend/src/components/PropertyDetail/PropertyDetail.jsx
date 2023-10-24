@@ -5,17 +5,38 @@ import "./style.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Calendar } from "primereact/calendar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+
+import { decodeToken } from "react-jwt";
+import Messages from "../Messages/ModalMessages";
 
 const PropertyDetail = () => {
-  const { filters, setFilters, getFilterByLocation } = useFilters();
+  const { filters, getFilterByLocation } = useFilters();
   const params = useParams();
   const { id } = params;
   const location = getFilterByLocation(id);
   const [dates, setDates] = useState([
-    new Date(filters.checkInDate),
-    new Date(filters.checkOutDate),
+    filters.checkInDate ? new Date(filters.checkInDate) : new Date(),
+    filters.checkOutDate ? new Date(filters.checkOutDate) : new Date(),
   ]);
+  const [modalShow, setModalShow] = useState(false);
+
+  // traer datos del usuario:
+  const [token, setToken] = useState(null);
+
+  const { isAuthenticated } = useSelector((state) => state?.auth);
+  useEffect(() => {
+    const authToken = localStorage.getItem("auth_token");
+    try {
+      setToken(JSON.parse(authToken));
+    } catch (error) {
+      console.error("Error al analizar el token:", error);
+    }
+  }, [isAuthenticated]);
+
+  const myDecodedToken = token ? decodeToken(token) : null;
+  // valores a enviar de la reserva
   const [values, setValue] = useState({
     location: {
       id: id,
@@ -42,7 +63,23 @@ const PropertyDetail = () => {
       },
     }));
   };
-  console.log(values);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!isAuthenticated) {
+      setModalShow(true);
+    } else {
+      if (myDecodedToken) {
+        setValue((prev) => ({
+          ...prev,
+          user: {
+            name: myDecodedToken.name,
+            email: myDecodedToken.email,
+          },
+        }));
+      }
+      console.log("valores a enviar", values);
+    }
+  };
 
   return (
     <div className="container-detail-main">
@@ -80,7 +117,7 @@ const PropertyDetail = () => {
             <Card>
               <Card.Body>
                 <Card.Title>{`$ ${location.price} USD`}</Card.Title>
-                <form className="detail-body">
+                <form className="detail-body" onSubmit={handleSubmit}>
                   <div>
                     <div className="input-detail">
                       <Calendar
@@ -100,11 +137,18 @@ const PropertyDetail = () => {
                       />
                     </div>
                   </div>
-                  <Button variant="primary">Reserve</Button>
+                  <Button type="submit" variant="primary">
+                    Reserve
+                  </Button>
                   <div className="detail-price">You won't be charged yet</div>
                 </form>
               </Card.Body>
             </Card>
+            <Messages
+              show={modalShow}
+              message={"You must to be logged to continue"}
+              onHide={() => setModalShow(false)}
+            />
           </div>
         </div>
       </div>
