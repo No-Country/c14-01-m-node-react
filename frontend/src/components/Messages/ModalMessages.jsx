@@ -12,7 +12,7 @@ function Messages(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h2>Atention!</h2>
+          <h2>{props.title}</h2>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>

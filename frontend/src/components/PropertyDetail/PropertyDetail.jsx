@@ -5,11 +5,12 @@ import "./style.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Calendar } from "primereact/calendar";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { decodeToken } from "react-jwt";
 import Messages from "../Messages/ModalMessages";
+import { sendTickets } from "../../redux/actions/ticketsActions";
 
 const PropertyDetail = () => {
   const { filters, getFilterByLocation } = useFilters();
@@ -35,49 +36,70 @@ const PropertyDetail = () => {
     }
   }, [isAuthenticated]);
 
-  const myDecodedToken = token ? decodeToken(token) : null;
   // valores a enviar de la reserva
   const [values, setValue] = useState({
-    location: {
-      id: id,
-      title: location.title,
-      price: location.price,
-    },
-    user: {
-      id: "",
-      name: "",
-      email: "",
-    },
-    booking: {
-      initialDate: filters.checkInDate,
-      endDate: filters.checkOutDate,
-      guests: filters.guests,
-    },
+    first_name: "",
+    last_name: "",
+    email: "",
+    id_location: id,
+    title: location.title,
+    price: location.price,
+    location: location.location,
+    initialDate: filters.checkInDate,
+    endDate: filters.checkOutDate,
+    guests: filters.guests,
   });
+  // redux
+  const dispatch = useDispatch();
+
+  const sendReservation = useCallback(() => {
+    dispatch(sendTickets(values));
+  });
+
+  const handleChangeCalendar = (e) => {
+    setDates(e.value);
+    setValue((prev) => ({
+      ...prev,
+      initialDate: e.value[0],
+      endDate: e.value[1],
+    }));
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValue((prev) => ({
       ...prev,
-      booking: {
-        [name]: value,
-      },
+      [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isAuthenticated) {
       setModalShow(true);
     } else {
-      if (myDecodedToken) {
-        setValue((prev) => ({
-          ...prev,
-          user: {
-            name: myDecodedToken.name,
+      try {
+        const myDecodedToken = token ? await decodeToken(token) : null;
+
+        if (myDecodedToken) {
+          const nameParts = myDecodedToken.name.split(" ");
+          const firstName = nameParts[0];
+          const lastName =
+            nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
+
+          setValue((prev) => ({
+            ...prev,
+            first_name: firstName,
+            last_name: lastName,
             email: myDecodedToken.email,
-          },
-        }));
+          }));
+
+          console.log("Valores a enviar", values);
+          sendReservation();
+        } else {
+          console.error("No se pudo decodificar el token.");
+        }
+      } catch (error) {
+        console.error("Error al procesar el token:", error);
       }
-      console.log("valores a enviar", values);
     }
   };
 
@@ -122,7 +144,7 @@ const PropertyDetail = () => {
                     <div className="input-detail">
                       <Calendar
                         value={dates}
-                        onChange={(e) => setDates(e.value)}
+                        onChange={(e) => handleChangeCalendar(e)}
                         numberOfMonths={2}
                         selectionMode="range"
                         className="input-detail"
@@ -132,8 +154,9 @@ const PropertyDetail = () => {
                       <input
                         type="text"
                         placeholder="Add Guests"
-                        value={values.booking.guests}
-                        onChange={handleChange}
+                        name="guests"
+                        value={values.guests}
+                        onChange={(e) => handleChange(e)}
                       />
                     </div>
                   </div>
@@ -146,6 +169,7 @@ const PropertyDetail = () => {
             </Card>
             <Messages
               show={modalShow}
+              title={"Atention!"}
               message={"You must to be logged to continue"}
               onHide={() => setModalShow(false)}
             />
