@@ -38,29 +38,30 @@ const PropertyDetail = () => {
   const myDecodedToken = token ? decodeToken(token) : null;
   // valores a enviar de la reserva
   const [values, setValue] = useState({
-    location: {
-      id: id,
-      title: location.title,
-      price: location.price,
-    },
-    user: {
-      id: "",
-      name: "",
-      email: "",
-    },
-    booking: {
-      initialDate: filters.checkInDate,
-      endDate: filters.checkOutDate,
-      guests: filters.guests,
-    },
+    first_name: "",
+    last_name: "",
+    email: "",
+    id_location: id,
+    title: location.title,
+    price: location.price,
+    location: location.location,
+    initialDate: filters.checkInDate,
+    endDate: filters.checkOutDate,
+    guests: filters.guests,
   });
+  const handleChangeCalendar = (e) => {
+    setDates(e.value);
+    setValue((prev) => ({
+      ...prev,
+      initialDate: e.value[0],
+      endDate: e.value[1],
+    }));
+  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValue((prev) => ({
       ...prev,
-      booking: {
-        [name]: value,
-      },
+      [name]: value,
     }));
   };
   const handleSubmit = (e) => {
@@ -71,10 +72,9 @@ const PropertyDetail = () => {
       if (myDecodedToken) {
         setValue((prev) => ({
           ...prev,
-          user: {
-            name: myDecodedToken.name,
-            email: myDecodedToken.email,
-          },
+          first_name: myDecodedToken.name.split(" ")[0],
+          last_name: myDecodedToken.name.split(" ")[1],
+          email: myDecodedToken.email,
         }));
       }
       console.log("valores a enviar", values);
@@ -122,7 +122,7 @@ const PropertyDetail = () => {
                     <div className="input-detail">
                       <Calendar
                         value={dates}
-                        onChange={(e) => setDates(e.value)}
+                        onChange={(e) => handleChangeCalendar(e)}
                         numberOfMonths={2}
                         selectionMode="range"
                         className="input-detail"
@@ -132,8 +132,9 @@ const PropertyDetail = () => {
                       <input
                         type="text"
                         placeholder="Add Guests"
-                        value={values.booking.guests}
-                        onChange={handleChange}
+                        name="guests"
+                        value={values.guests}
+                        onChange={(e) => handleChange(e)}
                       />
                     </div>
                   </div>
@@ -146,6 +147,7 @@ const PropertyDetail = () => {
             </Card>
             <Messages
               show={modalShow}
+              title={"Atention!"}
               message={"You must to be logged to continue"}
               onHide={() => setModalShow(false)}
             />
