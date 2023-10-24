@@ -4,7 +4,6 @@ import useFilters from "../../utils/useFilters";
 import "./style.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import formatDateToCustomFormat from "../../utils/dateConvert";
 import { Calendar } from "primereact/calendar";
 import { useState } from "react";
 
