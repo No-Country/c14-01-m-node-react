@@ -15,8 +15,6 @@ export default function Tickets() {
   });
 
   const { tickets } = useSelector((state) => state);
-  console.log(tickets)
-
 
   return <>
     {tickets?.map((ticket) =>
@@ -32,4 +30,4 @@ export default function Tickets() {
       />
     )}
   </>
-} 
+};
