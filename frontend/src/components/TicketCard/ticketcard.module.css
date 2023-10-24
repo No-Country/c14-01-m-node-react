@@ -1,0 +1,35 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  padding: 24px !important;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  margin: 10px;
+}
+
+.img {
+  width: 124px;
+  height: 106px;
+  border-radius: 12px !important;
+}
+
+.body {
+  padding-block: 0px;
+}
+
+.title {
+  margin-bottom: 0px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.usd {
+  font-weight: 500;
+}
+
+.desc {
+  color: #717171;
+}
