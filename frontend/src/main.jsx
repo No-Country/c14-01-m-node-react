@@ -10,6 +10,8 @@ import ListProperties from "./components/List/ListProperties";
 import Categories from "./components/CategoriesNav/Categories";
 import { FiltersProvider } from "./context/FilterContext";
 import PropertyDetail from "./components/PropertyDetail/PropertyDetail";
+import { PrimeReactProvider } from "primereact/api";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 import Tickets from "./pages/Tickets";
 
 const home = createBrowserRouter([
@@ -47,9 +49,11 @@ const home = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <FiltersProvider>
-        <RouterProvider router={home} />
-      </FiltersProvider>
+      <PrimeReactProvider>
+        <FiltersProvider>
+          <RouterProvider router={home} />
+        </FiltersProvider>
+      </PrimeReactProvider>
     </Provider>
   </React.StrictMode>
 );
