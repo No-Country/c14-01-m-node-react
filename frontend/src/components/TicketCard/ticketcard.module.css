@@ -1,0 +1,13 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  padding: 24px !important;
+  border: 1px solid rgb(221, 221, 221) !important;
+  border-radius: 12px !important;
+}
+
+.img {
+  width: 124px;
+  height: 106px;
+  border-radius: 12px !important;
+}

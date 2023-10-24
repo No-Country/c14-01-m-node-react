@@ -10,6 +10,7 @@ import ListProperties from "./components/List/ListProperties";
 import Categories from "./components/CategoriesNav/Categories";
 import { FiltersProvider } from "./context/FilterContext";
 import PropertyDetail from "./components/PropertyDetail/PropertyDetail";
+import Tickets from "./pages/Tickets";
 
 const home = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const home = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/tickets',
+    element: <Tickets />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
