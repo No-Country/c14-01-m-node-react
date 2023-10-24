@@ -5,11 +5,12 @@ import "./style.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Calendar } from "primereact/calendar";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useCallback, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { decodeToken } from "react-jwt";
 import Messages from "../Messages/ModalMessages";
+import { sendTickets } from "../../redux/actions/ticketsActions";
 
 const PropertyDetail = () => {
   const { filters, getFilterByLocation } = useFilters();
@@ -35,7 +36,6 @@ const PropertyDetail = () => {
     }
   }, [isAuthenticated]);
 
-  const myDecodedToken = token ? decodeToken(token) : null;
   // valores a enviar de la reserva
   const [values, setValue] = useState({
     first_name: "",
@@ -49,6 +49,13 @@ const PropertyDetail = () => {
     endDate: filters.checkOutDate,
     guests: filters.guests,
   });
+  // redux
+  const dispatch = useDispatch();
+
+  const sendReservation = useCallback(() => {
+    dispatch(sendTickets(values));
+  });
+
   const handleChangeCalendar = (e) => {
     setDates(e.value);
     setValue((prev) => ({
@@ -64,20 +71,35 @@ const PropertyDetail = () => {
       [name]: value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isAuthenticated) {
       setModalShow(true);
     } else {
-      if (myDecodedToken) {
-        setValue((prev) => ({
-          ...prev,
-          first_name: myDecodedToken.name.split(" ")[0],
-          last_name: myDecodedToken.name.split(" ")[1],
-          email: myDecodedToken.email,
-        }));
+      try {
+        const myDecodedToken = token ? await decodeToken(token) : null;
+
+        if (myDecodedToken) {
+          const nameParts = myDecodedToken.name.split(" ");
+          const firstName = nameParts[0];
+          const lastName =
+            nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
+
+          setValue((prev) => ({
+            ...prev,
+            first_name: firstName,
+            last_name: lastName,
+            email: myDecodedToken.email,
+          }));
+
+          console.log("Valores a enviar", values);
+          sendReservation();
+        } else {
+          console.error("No se pudo decodificar el token.");
+        }
+      } catch (error) {
+        console.error("Error al procesar el token:", error);
       }
-      console.log("valores a enviar", values);
     }
   };
 
