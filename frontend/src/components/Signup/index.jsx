@@ -63,7 +63,7 @@ export default function Signup() {
         Sign Up
       </button>
 
-      <Modal show={show} centered onHide={handleClose}>
+      <Modal className={styles.modal} show={show} centered onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Sign Up to Airbnb 2!</Modal.Title>
         </Modal.Header>

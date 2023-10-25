@@ -7,3 +7,7 @@ button {
   border: none;
   background-color: transparent;
 }
+
+.modal {
+  z-index: 10000 !important;
+}

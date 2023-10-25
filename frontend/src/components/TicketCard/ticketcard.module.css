@@ -4,30 +4,37 @@
   padding: 24px !important;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
-  margin: 10px;
+  margin-block: 10px;
 }
 
 .img {
-  width: 124px;
-  height: 106px;
+  width: 124px !important;
+  height: 106px !important;
   border-radius: 12px !important;
 }
 
+.head {
+  display: flex;
+  padding: 0px;
+}
+
 .body {
-  padding-block: 0px;
+  padding: 0px !important;
 }
 
 .title {
-  margin-bottom: 0px;
+  padding-left: 20px;
+  font-size: medium !important;
+}
+
+.txt {
+  padding-top: 10px;
+  font-weight: 500;
 }
 
 .total {
   display: flex;
   justify-content: space-between;
-}
-
-.usd {
-  font-weight: 500;
 }
 
 .desc {
