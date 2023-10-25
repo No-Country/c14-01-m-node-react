@@ -56,19 +56,17 @@ export const createReservation = async (req, res) => {
     }
 }
 
-export const reservationById = async (req,res) => {
+export const reservationByEmail = async (req,res) => {
     try {
 
-        const id = req.params.id
+        const  {email}  = req.params;
+        const reservation = await reservartionModel.findOne({email : email});
 
-        const reservation = await reservartionModel.findById(id);
-
-        if(!reservation) {
-            res.status(404).send({message : 'No reservation found for id: ' + id});
-        }
-
-        reservation.status(200).send({message : 'reservation was successfully', payload : reservation});
-        
+        if (reservation) {
+            res.status(200).send({ message: "Email del usuario encontrado", email: email });
+          } else {
+            res.status(404).send({ message: "Email del usuario no encontrado" });
+          }
     } catch (error) {
         res.status(500).json({ error: "Error al obtener la reserva" });
 
