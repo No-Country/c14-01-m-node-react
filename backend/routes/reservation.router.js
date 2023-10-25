@@ -1,12 +1,12 @@
 import { Router } from "express";
 
-import { allReservations, createReservation,reservationById, updateReservation, deleteReservations } from "../controllers/reservation.controllers.js";
+import { allReservations, createReservation,reservationByEmail, updateReservation, deleteReservations } from "../controllers/reservation.controllers.js";
 
 const router = Router();
 
 router.get("/", allReservations);
 
-router.get("/:id", reservationById);
+router.get("/:email", reservationByEmail);
 
 router.post("/", createReservation);
 
