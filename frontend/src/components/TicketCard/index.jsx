@@ -20,17 +20,19 @@ export default function TicketCard(props) {
 
   return (
     <Card className={styles.card}>
-      <Card.Img className={styles.img} variant='top' src={image} />
       <Card.Body className={styles.body}>
-        <Card.Title className={styles.title}>
-          {title}
-        </Card.Title>
-        <Card.Text>
-          <div className={styles.desc}>{description}</div>
+        <div className={styles.head}>
+          <Card.Img className={styles.img} variant='top' src={image} />
+          <Card.Title className={styles.title}>
+            {title}
+            <div className={styles.desc}>{description}</div>
+          </Card.Title>
+        </div>
+        <Card.Text className={styles.txt}>
           <div>{parseDate(checkinDate)} - {parseDate(checkoutDate)}</div>
           <div className={styles.total}>
             <div>${price} x {days} nights</div>
-            <div className={styles.usd}>TOTAL(USD) ${price * days} </div>
+            <div>TOTAL(USD) ${price * days} </div>
           </div>
         </Card.Text>
       </Card.Body>

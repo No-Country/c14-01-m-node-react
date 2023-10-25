@@ -8,6 +8,7 @@ import { decodeToken } from "react-jwt";
 import "./styles.css";
 import getTokenToUser from "../../utils/getTokenToUser";
 import { FiltersContext } from "../../context/FilterContext";
+import Tickets from "../Tickets";
 
 // eslint-disable-next-line react/prop-types
 function DropDownMenu({ children }) {
@@ -55,6 +56,7 @@ function DropDownMenu({ children }) {
           </>
         )}
         <Dropdown.Divider />
+        <Dropdown.Item><Tickets /></Dropdown.Item>
         <Dropdown.Item href="#/action-1">Messages</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Notifications</Dropdown.Item>
         <Dropdown.Item href="#/action-3">Trips</Dropdown.Item>
