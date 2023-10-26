@@ -28,7 +28,7 @@ function DropDownMenu({ children }) {
     } catch (error) {
       console.error("Error al analizar el token:", error);
     }
-  }, []);
+  }, [user.token]);
 
   const handleLogout = () => {
     setToken(null);
