@@ -166,7 +166,8 @@ const PropertyDetail = () => {
                       {`$ 
                        ${
                          values.initialDate
-                           ? ((values.endDate - values.initialDate) /
+                           ? ((new Date(values.endDate) -
+                               new Date(values.initialDate)) /
                                (1000 * 60 * 60 * 24)) *
                              parseInt(location.price)
                            : 0
