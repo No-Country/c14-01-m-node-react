@@ -5,3 +5,9 @@
 .body {
   padding-top: 0px !important;
 }
+
+.button {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}

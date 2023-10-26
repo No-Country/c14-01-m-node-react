@@ -7,18 +7,18 @@ import styles from './login.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from '../../redux/actions/authActions';
 
-export default function Login() {
+export default function Login(props) {
+  const {  } = props;
+
   const [show, setShow] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(false);
+  //const [showPassword, setShowPassword] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
   const [inputs, setInputs] = useState({ email: '', password: '' });
 
-  const { isAuthenticated, user } = useSelector(state => state?.auth);
+  const { user } = useSelector(state => state?.auth);
 
   useEffect(() => {
-    if (isAuthenticated) setShow(false);
-    if (user.status === 'error') setError(true);
+    if (user.status === 'success') setShow(false);
   }, [user.status]);
 
   const dispatch = useDispatch();
@@ -40,9 +40,9 @@ export default function Login() {
     setInputs((values) => ({ ...values, [name]: value }));
   };
 
-  const handleShowPassword = () => {
+  /* const handleShowPassword = () => {
     setShowPassword(!showPassword);
-  };
+  }; */
 
   const handleClose = () => {
     setShow(false);
@@ -71,6 +71,7 @@ export default function Login() {
             <Form.Group>
               <InputGroup size='lg' className="mb-3">
                 <Form.Control
+                  className={styles.input}
                   onChange={handleInputChange}
                   name='email'
                   placeholder="E-mail"
@@ -83,15 +84,16 @@ export default function Login() {
               </InputGroup>
               <InputGroup size='lg' className="mb-3">
                 <Form.Control
+                  className={styles.input}
                   onChange={handleInputChange}
                   name='password'
                   placeholder="Password"
                   aria-label="Password"
-                  type={showPassword ? 'text' : 'password'}
+                  type='password'
                   maxLength={50}
-                  isInvalid={error}
+                  isInvalid={user.status === 'error'}
                 />
-                <InputGroup.Checkbox onClick={handleShowPassword} aria-label="Checkbox to show password" />
+                {/* <InputGroup.Checkbox onClick={handleShowPassword} aria-label="Checkbox to show password" /> */}
                 <Form.Control.Feedback type="invalid">  Username or password are invalid.</Form.Control.Feedback>
               </InputGroup>
               <div className="d-grid gap-2">

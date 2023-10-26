@@ -9,11 +9,11 @@ import useFilters from "../../utils/useFilters";
 import formatDateToCustomFormat from "../../utils/dateConvert";
 
 const Navbar = () => {
-  const { isAuthenticated } = useSelector((state) => state?.auth);
+  const { user } = useSelector((state) => state?.auth);
   const { userLogged } = useContext(FiltersContext);
   const [show, setShow] = useState(false);
   const { filters } = useFilters();
-  console.log("userLogged", userLogged, "is Authenticated", isAuthenticated);
+
   return (
     <>
       <div className="nav-air">
@@ -49,7 +49,7 @@ const Navbar = () => {
           <div className="dropdown-air">
             <DropdownMenu className="dropdown-air">
               <img src="/icons/hamburguer.png" alt="" />
-              {isAuthenticated && userLogged ? (
+              {user.token && userLogged ? (
                 <span className="logged-user">
                   {userLogged.substring(0, 1)}
                 </span>

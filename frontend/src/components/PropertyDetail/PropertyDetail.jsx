@@ -27,7 +27,6 @@ const PropertyDetail = () => {
   // traer datos del usuario:
   const [token, setToken] = useState(null);
 
-  const { isAuthenticated } = useSelector((state) => state?.auth);
   useEffect(() => {
     const authToken = localStorage.getItem("auth_token");
     try {
@@ -35,7 +34,7 @@ const PropertyDetail = () => {
     } catch (error) {
       console.error("Error al analizar el token:", error);
     }
-  }, [isAuthenticated]);
+  },[]);
 
   // valores a enviar de la reserva
   const [values, setValue] = useState({
