@@ -21,13 +21,13 @@ export default function Tickets() {
 
   useEffect(() => {
     fetchGetTickets();
-  });
+  },[]);
 
   const { tickets } = useSelector((state) => state);
 
-  return <div data-backdrop="false">
+  return <div>
 
-    <button onClick={handleShow}>Reservations</button>
+    <button className={styles.button} onClick={handleShow}>Reservations</button>
 
     <Modal className={styles.modal} show={show} centered onHide={handleClose}>
       <Modal.Header closeButton>

@@ -15,7 +15,6 @@ const Categories = () => {
     }));
   };
 
-  console.log(filters);
   return (
     <div className="container-categories-general">
       <div className="container-categories">

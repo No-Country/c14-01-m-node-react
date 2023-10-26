@@ -12,10 +12,15 @@ import Tickets from "../Tickets";
 
 // eslint-disable-next-line react/prop-types
 function DropDownMenu({ children }) {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState([], () => {
+    const localData = localStorage.getItem('auth_token');
+    return localData ? JSON.parse(localData) : [];
+  });
 
-  const { isAuthenticated } = useSelector((state) => state?.auth);
+  const { user } = useSelector((state) => state?.auth);
+
   const { setUserLogged } = useContext(FiltersContext);
+
   useEffect(() => {
     const authToken = localStorage.getItem("auth_token");
     try {
@@ -23,7 +28,7 @@ function DropDownMenu({ children }) {
     } catch (error) {
       console.error("Error al analizar el token:", error);
     }
-  }, [isAuthenticated]);
+  }, []);
 
   const handleLogout = () => {
     setToken(null);
@@ -41,7 +46,7 @@ function DropDownMenu({ children }) {
         {children}
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        {token || isAuthenticated ? (
+        {(token && token !== "undefined") || user.token ? (
           <Dropdown.Item>
             <Logout handleLogout={handleLogout} />
           </Dropdown.Item>
