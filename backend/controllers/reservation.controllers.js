@@ -60,10 +60,10 @@ export const reservationByEmail = async (req,res) => {
     try {
 
         const  {email}  = req.params;
-        const reservation = await reservartionModel.findOne({email : email});
+        const reservation = await reservartionModel.find({email : email});
 
         if (reservation) {
-            res.status(200).send({ message: "Email del usuario encontrado", email: email });
+            res.status(200).json(reservation);
           } else {
             res.status(404).send({ message: "Email del usuario no encontrado" });
           }
