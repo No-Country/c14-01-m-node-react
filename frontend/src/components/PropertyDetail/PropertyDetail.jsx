@@ -22,6 +22,7 @@ const PropertyDetail = () => {
     filters.checkOutDate ? new Date(filters.checkOutDate) : new Date(),
   ]);
   const [modalShow, setModalShow] = useState(false);
+  const [show, setShow] = useState(false);
 
   // traer datos del usuario:
   const [token, setToken] = useState(null);
@@ -92,7 +93,10 @@ const PropertyDetail = () => {
           }));
 
           console.log("Valores a enviar", values);
-          sendReservation();
+          if (isAuthenticated) {
+            setShow(true);
+            sendReservation();
+          }
         } else {
           console.error("No se pudo decodificar el token.");
         }
@@ -137,9 +141,10 @@ const PropertyDetail = () => {
           <div className="bottom-right">
             <Card>
               <Card.Body>
-                <Card.Title>{`$ ${location.price} USD`}</Card.Title>
+                <Card.Title>{`$ ${location.price} USD per night`}</Card.Title>
                 <form className="detail-body" onSubmit={handleSubmit}>
                   <div>
+                    <label>CheckIn - CheckOut</label>
                     <div className="input-detail">
                       <Calendar
                         value={dates}
@@ -149,6 +154,7 @@ const PropertyDetail = () => {
                         className="input-detail"
                       />
                     </div>
+                    <label>Guests</label>
                     <div className="input-detail">
                       <input
                         type="text"
@@ -158,6 +164,18 @@ const PropertyDetail = () => {
                         onChange={(e) => handleChange(e)}
                       />
                     </div>
+                    <label>
+                      Total:{" "}
+                      {`$ 
+                       ${
+                         values.initialDate
+                           ? ((new Date(values.endDate) -
+                               new Date(values.initialDate)) /
+                               (1000 * 60 * 60 * 24)) *
+                             parseInt(location.price)
+                           : 0
+                       } USD`}
+                    </label>
                   </div>
                   <Button type="submit" variant="primary">
                     Reserve
@@ -171,6 +189,12 @@ const PropertyDetail = () => {
               title={"Atention!"}
               message={"You must to be logged to continue"}
               onHide={() => setModalShow(false)}
+            />
+            <Messages
+              show={show}
+              title={"Reservation:"}
+              message={"Your reservation was sent!"}
+              onHide={() => setShow(false)}
             />
           </div>
         </div>
