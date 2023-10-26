@@ -138,9 +138,10 @@ const PropertyDetail = () => {
           <div className="bottom-right">
             <Card>
               <Card.Body>
-                <Card.Title>{`$ ${location.price} USD`}</Card.Title>
+                <Card.Title>{`$ ${location.price} USD per night`}</Card.Title>
                 <form className="detail-body" onSubmit={handleSubmit}>
                   <div>
+                    <label>CheckIn - CheckOut</label>
                     <div className="input-detail">
                       <Calendar
                         value={dates}
@@ -150,6 +151,7 @@ const PropertyDetail = () => {
                         className="input-detail"
                       />
                     </div>
+                    <label>Guests</label>
                     <div className="input-detail">
                       <input
                         type="text"
@@ -159,6 +161,17 @@ const PropertyDetail = () => {
                         onChange={(e) => handleChange(e)}
                       />
                     </div>
+                    <label>
+                      Total:{" "}
+                      {`$ 
+                       ${
+                         values.initialDate
+                           ? ((values.endDate - values.initialDate) /
+                               (1000 * 60 * 60 * 24)) *
+                             parseInt(location.price)
+                           : 0
+                       } USD`}
+                    </label>
                   </div>
                   <Button type="submit" variant="primary">
                     Reserve
