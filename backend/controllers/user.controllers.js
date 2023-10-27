@@ -80,7 +80,7 @@ export const deleteUser = async (req, res) => {
 
 export const createUser = async (req, res) => {
   try {
-    const { first_name, last_name, email, password, role } = req.body;
+    const { first_name, last_name, email,birthday, location, password, role } = req.body;
 
     const newUser = new userModel({
       first_name,
@@ -97,6 +97,6 @@ export const createUser = async (req, res) => {
       .status(201)
       .json({ mensaje: "Usuario creado con éxito", user: newUser });
   } catch (error) {
-    res.status(500).json({ error: "Error al crear el usuario" });
+    res.status(500).json({ error: "Error al crear el usuario", error: error.message });
   }
 };

@@ -15,7 +15,7 @@ export const registerUser = async (req, res) => {
     try {
 
         return res
-        .status(201)
+        .status(200)
         .send({ status: "success", message: "User registered" });
     
       } catch (error) {
