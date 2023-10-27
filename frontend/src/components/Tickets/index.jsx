@@ -4,9 +4,14 @@ import { getTickets } from "../../redux/actions/ticketsActions";
 import TicketCard from "../TicketCard";
 import Modal from "react-bootstrap/Modal";
 import styles from "./tickets.module.css";
+import { useJwt } from "react-jwt";
 
 export default function Tickets() {
   const [show, setShow] = useState(false);
+
+  const { token } = useSelector(state => state?.auth?.user);
+
+  const { decodedToken } = useJwt(token);
 
   const handleClose = () => {
     setShow(false);
@@ -16,12 +21,12 @@ export default function Tickets() {
   const dispatch = useDispatch();
 
   const fetchGetTickets = useCallback(() => {
-    dispatch(getTickets());
+    dispatch(getTickets(decodedToken?.email));
   });
 
   useEffect(() => {
-    fetchGetTickets();
-  }, []);
+    if (decodedToken?.email) fetchGetTickets();
+  }, [decodedToken?.email]);
 
   const { tickets } = useSelector((state) => state);
 
@@ -36,13 +41,13 @@ export default function Tickets() {
           <Modal.Title>Your reservations!</Modal.Title>
         </Modal.Header>
         <Modal.Body className={styles.body}>
-          {tickets?.reservations.map((ticket) => (
+          {tickets?.reservations?.map((ticket) => (
             <TicketCard
               key={ticket._id}
               title={ticket.title}
               description={ticket.description}
               price={ticket.price}
-              image={ticket.images[0]}
+              /* image={ticket.images[0]} */
               checkinDate={ticket.initialDate}
               checkoutDate={ticket.endDate}
               location={ticket.location}
