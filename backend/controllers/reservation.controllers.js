@@ -22,7 +22,7 @@ export const createReservation = async (req, res) => {
 
 
 
-        const {first_name, last_name, email, title, price, location, initialDate, endDate, guests} = req.body;
+        const {first_name, last_name, email, title, price, location, initialDate, endDate, guests, image} = req.body;
 
         const reservationData = {
             first_name,
@@ -33,8 +33,12 @@ export const createReservation = async (req, res) => {
             location,
             initialDate,
             endDate,
-            guests
+            guests,
+            reservationDate : new Date().toLocaleString(),
+            image
         };
+
+
 
         const reservationCreated = await reservartionModel.create(reservationData);
 
