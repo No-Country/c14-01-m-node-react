@@ -25,16 +25,7 @@ const PropertyDetail = () => {
   const [show, setShow] = useState(false);
 
   // traer datos del usuario:
-  const [token, setToken] = useState(null);
-
-  useEffect(() => {
-    const authToken = localStorage.getItem("auth_token");
-    try {
-      setToken(JSON.parse(authToken));
-    } catch (error) {
-      console.error("Error al analizar el token:", error);
-    }
-  },[]);
+  const { user } = useSelector((state) => state?.auth);
 
   // valores a enviar de la reserva
   const [values, setValue] = useState({
@@ -49,6 +40,24 @@ const PropertyDetail = () => {
     endDate: filters.checkOutDate,
     guests: filters.guests,
   });
+
+  const parseToken = async () => {
+    const myDecodedToken = user.token ? await decodeToken(user.token) : null;
+    if (myDecodedToken) {
+      const nameParts = myDecodedToken.name.split(" ");
+      setValue((prev) => ({
+        ...prev,
+        first_name: nameParts[0],
+        last_name: nameParts.length > 1 ? nameParts.slice(1).join(" ") : "",
+        email: myDecodedToken.email,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    parseToken(user.token);
+  }, [user.token]);
+
   // redux
   const dispatch = useDispatch();
 
@@ -73,39 +82,17 @@ const PropertyDetail = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!isAuthenticated) {
+    if (!user.status) {
       setModalShow(true);
     } else {
-      try {
-        const myDecodedToken = token ? await decodeToken(token) : null;
-
-        if (myDecodedToken) {
-          const nameParts = myDecodedToken.name.split(" ");
-          const firstName = nameParts[0];
-          const lastName =
-            nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
-
-          setValue((prev) => ({
-            ...prev,
-            first_name: firstName,
-            last_name: lastName,
-            email: myDecodedToken.email,
-          }));
-
-          console.log("Valores a enviar", values);
-          if (isAuthenticated) {
-            setShow(true);
-            sendReservation();
-          }
-        } else {
-          console.error("No se pudo decodificar el token.");
-        }
-      } catch (error) {
-        console.error("Error al procesar el token:", error);
+      console.log("Valores a enviar", values);
+      if (user.status) {
+        setShow(true);
+        sendReservation();
       }
     }
   };
-
+  console.log("user", user);
   return (
     <div className="container-detail-main">
       <div className="container-detail">
