@@ -21,7 +21,9 @@ const reservartionSchema = new mongoose.Schema({
     location: String,
     initialDate : Date,
     endDate : Date,
-    guests : Number
+    guests : Number,
+    reservationDate: String,
+    image : String,
 });
 
 const reservartionModel = mongoose.model(reservartionCollection, reservartionSchema);
