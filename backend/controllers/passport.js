@@ -1,5 +1,5 @@
-import User from "../mongo/users.mongo.js";
-import cartModel from "../models/cartModel.js";
+/* import User from "../mongo/users.mongo.js";
+import cartModel from "../models/cartModel.js" */;
 import userModel from "../models/userModel.js";
 
 import passport from "passport";
@@ -13,8 +13,8 @@ import config from "../utils/config.js";
 const {JWT_SECRET, COOKIE_NAME} = config;
 
 const LocalStrategy = local.Strategy;
-const JwtStrategy = jwt.Strategy;
-const ExtractJwt = jwt.ExtractJwt;
+/* const JwtStrategy = jwt.Strategy;
+const ExtractJwt = jwt.ExtractJwt; */
 
 /* const cookieExtractor = (req) => {
     let token = null;
@@ -41,11 +41,11 @@ const initializePassport = () => {
                 let user = await userModel.findOne({email:username});
                 
                 if (user) {
-                    console.log("user already exists");
+                    console.log("User already exists");
                     return done(null, false);
                 }
 
-                const cart = await cartModel.create({})
+                /* const cart = await cartModel.create({}) */
  
                 const newUser = {
                     first_name,
@@ -56,7 +56,7 @@ const initializePassport = () => {
                     age,
                     password: createHash(password),
                     role : "inquilino",
-                    cart: cart._id, 
+                    /* cart: cart._id, */ 
                 }
 
                 const result = await userModel.create(newUser);
