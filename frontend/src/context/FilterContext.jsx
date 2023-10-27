@@ -19,7 +19,7 @@ export function FiltersProvider({ children }) {
 
   const [products, setProducts] = useState([]);
 
-  const [userLogged, setUserLogged] = useState(null);
+  // const [userLogged, setUserLogged] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,9 +35,7 @@ export function FiltersProvider({ children }) {
   }, []);
 
   return (
-    <FiltersContext.Provider
-      value={{ filters, setFilters, products, userLogged, setUserLogged }}
-    >
+    <FiltersContext.Provider value={{ filters, setFilters, products }}>
       {children}
     </FiltersContext.Provider>
   );

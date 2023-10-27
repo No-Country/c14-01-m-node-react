@@ -13,13 +13,21 @@ function SearchBar({ show, setShow }) {
 
   const handleChangeCalendar = (e) => {
     setDates(e.value);
-    const checkInDate = new Date(e.value[0]);
-    const checkOutDate = new Date(e.value[1]);
-    setFilters((prev) => ({
-      ...prev,
-      checkInDate: checkInDate.toISOString(),
-      checkOutDate: checkOutDate.toISOString(),
-    }));
+    if (e.value) {
+      const checkInDate = new Date(e.value[0]);
+      const checkOutDate = new Date(e.value[1]);
+      setFilters((prev) => ({
+        ...prev,
+        checkInDate: checkInDate.toISOString(),
+        checkOutDate: checkOutDate.toISOString(),
+      }));
+    } else {
+      setFilters((prev) => ({
+        ...prev,
+        checkInDate: null,
+        checkOutDate: null,
+      }));
+    }
   };
   const handleChange = (e) => {
     const { name, value } = e.target;

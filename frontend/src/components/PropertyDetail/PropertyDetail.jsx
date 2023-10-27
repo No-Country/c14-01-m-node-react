@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { decodeToken } from "react-jwt";
 import Messages from "../Messages/ModalMessages";
 import { sendTickets } from "../../redux/actions/ticketsActions";
+import { Form } from "react-bootstrap";
 
 const PropertyDetail = () => {
   const { filters, getFilterByLocation } = useFilters();
@@ -37,11 +38,15 @@ const PropertyDetail = () => {
     price: location.price,
     location: location.location,
     image: location.images[0],
-    initialDate: filters.checkInDate,
-    endDate: filters.checkOutDate,
+    initialDate: filters.checkInDate ? filters.checkInDate : new Date(),
+    endDate: filters.checkOutDate ? filters.checkOutDate : new Date(),
     guests: filters.guests,
   });
 
+  // validacion del campo guest
+  const [validated, setValidated] = useState(false);
+
+  // decodificar token
   const parseToken = async () => {
     const myDecodedToken = user.token ? await decodeToken(user.token) : null;
     if (myDecodedToken) {
@@ -74,34 +79,45 @@ const PropertyDetail = () => {
       endDate: e.value[1],
     }));
   };
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValue((prev) => ({
-      ...prev,
-      [name]: value,
+  const handleChangeGuests = (e) => {
+    const newGuests = e.target.value;
+    setValue((prevValues) => ({
+      ...prevValues,
+      guests: newGuests,
     }));
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!user.status) {
-      setModalShow(true);
-    } else {
-      console.log("Valores a enviar", values);
-      if (user.status) {
-        setShow(true);
-        sendReservation();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setValidated(true);
+    if (validated) {
+      if (user.token) {
+        parseToken(user.token);
+        console.log("values", values);
+      }
+      if (!user.token) {
+        setModalShow(true);
+      } else {
+        console.log("Valores a enviar", values);
+        if (user.status) {
+          setShow(true);
+          sendReservation();
+        }
       }
     }
   };
-  console.log("user", user);
   return (
     <div className="container-detail-main">
       <div className="container-detail">
-        <h1 className="location-title">{location.title}</h1>
-        <h1 className="location-subtitle">{location.description}</h1>
+        <h1 className="location-title">{location?.title}</h1>
+        <h1 className="location-subtitle">{location?.description}</h1>
 
         <div className="container-images">
-          {location.images.map((image, i) => (
+          {location?.images.map((image, i) => (
             <div className={`photo-${i}`} key={i}>
               <img className="photo-img" src={image} />
             </div>
@@ -109,7 +125,7 @@ const PropertyDetail = () => {
         </div>
         <div className="container-bottom">
           <div className="bottom-left">
-            <h1>{location.description}</h1>
+            <h1>{location?.description}</h1>
             <p>
               It has a large kitchen-dining room and a breakfast room where you
               can enjoy your meals in a nice and bright space. Premium furniture
@@ -121,7 +137,7 @@ const PropertyDetail = () => {
             </p>
             <h2>What this place offer</h2>
             <ul>
-              {location.amenities.map((item, i) => (
+              {location?.amenities.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </ul>
@@ -129,8 +145,13 @@ const PropertyDetail = () => {
           <div className="bottom-right">
             <Card>
               <Card.Body>
-                <Card.Title>{`$ ${location.price} USD per night`}</Card.Title>
-                <form className="detail-body" onSubmit={handleSubmit}>
+                <Card.Title>{`$ ${location?.price} USD per night`}</Card.Title>
+                <Form
+                  noValidate
+                  validated={validated}
+                  onSubmit={handleSubmit}
+                  className="detail-body"
+                >
                   <div>
                     <label>CheckIn - CheckOut</label>
                     <div className="input-detail">
@@ -144,13 +165,18 @@ const PropertyDetail = () => {
                     </div>
                     <label>Guests</label>
                     <div className="input-detail">
-                      <input
+                      <Form.Control
                         type="text"
                         placeholder="Add Guests"
-                        name="guests"
-                        value={values.guests}
-                        onChange={(e) => handleChange(e)}
+                        aria-describedby="inputGroupPrepend"
+                        value={values.guests ? values.guests : ""}
+                        onChange={handleChangeGuests}
+                        className="input-detail"
+                        required
                       />
+                      <Form.Control.Feedback type="invalid">
+                        Please insert at least one guest
+                      </Form.Control.Feedback>
                     </div>
                     <label>
                       Total:{" "}
@@ -159,7 +185,8 @@ const PropertyDetail = () => {
                          values.initialDate
                            ? ((new Date(values.endDate) -
                                new Date(values.initialDate)) /
-                               (1000 * 60 * 60 * 24)) *
+                               (1000 * 60 * 60 * 24) +
+                               1) *
                              parseInt(location.price)
                            : 0
                        } USD`}
@@ -169,7 +196,7 @@ const PropertyDetail = () => {
                     Reserve
                   </Button>
                   <div className="detail-price">You won't be charged yet</div>
-                </form>
+                </Form>
               </Card.Body>
             </Card>
             <Messages
