@@ -1,7 +1,10 @@
 import { SIGN_UP, LOG_IN, LOG_OUT } from '../actions/types';
 
+let token = localStorage.getItem('auth_token');
+if (token === 'undefined') token = null
+
 const initialState = {
-  user: { status: null, message: null, token: null },
+  user: { status: null, message: null, token: token },
 };
 
 export default function authReducer(state = initialState, action) {
@@ -25,5 +28,5 @@ export default function authReducer(state = initialState, action) {
 };
 
 export const saveTokenToLocalStorage = (token) => {
-  localStorage.setItem('auth_token', JSON.stringify(token))
+  localStorage.setItem('auth_token', token)
 };
