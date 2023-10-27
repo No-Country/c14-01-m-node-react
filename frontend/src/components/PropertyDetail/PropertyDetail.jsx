@@ -36,6 +36,7 @@ const PropertyDetail = () => {
     title: location.title,
     price: location.price,
     location: location.location,
+    image: location.images[0],
     initialDate: filters.checkInDate,
     endDate: filters.checkOutDate,
     guests: filters.guests,
