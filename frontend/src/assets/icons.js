@@ -1,5 +1,10 @@
 const icons = [
   {
+    name: "all",
+    image:
+      "https://a0.muscache.com/pictures/b887040f-0968-4174-9a4f-2d41f8728248.jpg",
+  },
+  {
     name: "tropical",
     image:
       "https://a0.muscache.com/pictures/ee9e2a40-ffac-4db9-9080-b351efc3cfc4.jpg",

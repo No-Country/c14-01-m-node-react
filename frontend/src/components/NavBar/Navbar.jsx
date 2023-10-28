@@ -1,18 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 import "./styles.css";
 import { useSelector } from "react-redux";
-import { useContext, useState } from "react";
-import { FiltersContext } from "../../context/FilterContext";
+import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import useFilters from "../../utils/useFilters";
 import formatDateToCustomFormat from "../../utils/dateConvert";
+import { decodeToken } from "react-jwt";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state?.auth);
-  const { userLogged } = useContext(FiltersContext);
+  const [userLogged, setUserLogged] = useState({
+    name: "",
+  });
   const [show, setShow] = useState(false);
   const { filters } = useFilters();
+  const params = useParams();
+  const id = params && params.id;
+
+  const parseToken = async () => {
+    const myDecodedToken = user.token ? await decodeToken(user.token) : null;
+    if (myDecodedToken) {
+      setUserLogged((prev) => ({
+        ...prev,
+        name: myDecodedToken.name,
+      }));
+    } else {
+      setUserLogged((prev) => ({
+        ...prev,
+        name: null,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    parseToken(user.token);
+  }, [user.token]);
 
   return (
     <>
@@ -23,7 +46,10 @@ const Navbar = () => {
           </Link>
         </div>
         {!show ? (
-          <div className="search-air" onClick={() => setShow(true)}>
+          <div
+            className="search-air"
+            onClick={() => (!id ? setShow(true) : setShow(false))}
+          >
             <div>{filters.location ? filters.location : "Anywhere"}</div>
             <div className="light-color">|</div>
             <div>
@@ -49,9 +75,9 @@ const Navbar = () => {
           <div className="dropdown-air">
             <DropdownMenu className="dropdown-air">
               <img src="/icons/hamburguer.png" alt="" />
-              {user.token && userLogged ? (
+              {userLogged.name ? (
                 <span className="logged-user">
-                  {userLogged.substring(0, 1)}
+                  {userLogged.name.substring(0, 1)}
                 </span>
               ) : (
                 <img src="/icons/profile.png" alt="" />
