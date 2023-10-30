@@ -5,6 +5,7 @@ import Logout from "../Logout";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./styles.css";
 import Tickets from "../Tickets";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 function DropDownMenu({ children }) {
@@ -40,7 +41,9 @@ function DropDownMenu({ children }) {
         <Dropdown.Item href="#/action-3">Wish Lists</Dropdown.Item>
         <Dropdown.Divider />
         <Dropdown.Item href="#/action-3">AirBnB your home</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Account</Dropdown.Item>
+        {(user.token && user.token !== "undefined") || user.token ? (
+          <Dropdown.Item href="/profile/detail">Account</Dropdown.Item>
+        ) : null}
       </Dropdown.Menu>
     </Dropdown>
   );
