@@ -12,6 +12,9 @@ import { FiltersProvider } from "./context/FilterContext";
 import PropertyDetail from "./components/PropertyDetail/PropertyDetail";
 import { PrimeReactProvider } from "primereact/api";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
+import Profile from "./components/Perfil/Profile";
+import ProfileEdit from "./components/Perfil/ProfileEdit";
+import ProfileDetail from "./components/Perfil/ProfileDetail";
 
 const home = createBrowserRouter([
   {
@@ -36,6 +39,26 @@ const home = createBrowserRouter([
       {
         path: "/filter/:id",
         element: <PropertyDetail />,
+      },
+    ],
+  },
+  {
+    path: "/profile",
+    element: <Home />,
+    children: [
+      {
+        path: "/profile",
+        element: <Profile />,
+        children: [
+          {
+            path: "/profile/detail",
+            element: <ProfileDetail />,
+          },
+          {
+            path: "/profile/edit",
+            element: <ProfileEdit />,
+          },
+        ],
       },
     ],
   },
