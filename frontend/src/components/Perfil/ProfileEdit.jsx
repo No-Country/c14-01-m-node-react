@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 import { useCallback, useState } from "react";
 import { Calendar } from "primereact/calendar";
-import { redirect } from "react-router-dom";
 import { sendUsers } from "../../redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
 

@@ -9,7 +9,7 @@ export default function userReducer(state = initialState, action) {
     case GET_USERS:
       return { ...state, user: action.payload };
     case SEND_USERS:
-      return { ...state };
+      return { ...state, user: action.payload };
     default:
       return state;
   }

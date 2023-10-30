@@ -24,8 +24,8 @@ export const sendUsers = (values, id) => {
         ...values,
       })
       .then((response) => {
-        console.log("response", response);
-        dispatch({ type: SEND_USERS, payload: response.data.user });
+        if (response.statusText == "OK")
+          dispatch({ type: SEND_USERS, payload: response.data.user });
       })
       .catch((error) => {
         console.log(error);
