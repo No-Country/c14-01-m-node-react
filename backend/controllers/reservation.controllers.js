@@ -1,6 +1,7 @@
 import reservartionModel from "../models/reservationModel.js";
 import config from "../utils/config.js";
 import {transport} from "../utils/transport.js";
+import { emailTemplate } from "../utils/email.template.js";
 
 const {EMAIL_USER} = config;
 
@@ -17,10 +18,6 @@ export const allReservations = async (req,res) => {
 
 export const createReservation = async (req, res) => {
     try {
-
-        //en este endpoint hay que ver de donde e saca el id del usuario y de la vivienda para hacer la reserva.. quizas trayendo ambos id se puede sacar la info de cada uno.. o quizas se puede implementar jwt. 
-
-
 
         const {first_name, last_name, email, title, price, location, initialDate, endDate, guests, image} = req.body;
 
@@ -46,7 +43,7 @@ export const createReservation = async (req, res) => {
             from: `${EMAIL_USER}`,
             to: email,
             subject: "Reservation created successfully!!",
-            html:"aca se implementa un html con los datos de la reserva" ,
+            html:emailTemplate.passwordRestoreEmail(first_name, last_name,email, price, title, location, initialDate, endDate, guests, image) ,
             text: "Testin email sent",
             attachments: [],
         });

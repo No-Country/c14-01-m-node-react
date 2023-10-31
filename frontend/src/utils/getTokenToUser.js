@@ -1,14 +1,7 @@
-const getTokenToUser = {
-  save: (decodedToken) => {
-    if (decodedToken) localStorage.setItem("user", decodedToken.name);
-  },
-  get: () => {
-    const userLogged = localStorage.getItem("user");
-    if (userLogged) return userLogged;
-  },
-  drop: () => {
-    localStorage.removeItem("user");
-  },
+import { decodeToken } from "react-jwt";
+
+const getToken = async (token) => {
+  await decodeToken(token);
 };
 
-export default getTokenToUser;
+export default getToken;

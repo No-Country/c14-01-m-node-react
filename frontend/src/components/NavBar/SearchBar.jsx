@@ -78,7 +78,7 @@ function SearchBar({ show, setShow }) {
               />
             </div>
 
-            <img src="icons/button-search.png" alt="search-button" />
+            <img src="/icons/button-search.png" alt="search-button" />
           </form>
         </Modal.Body>
       </Modal>

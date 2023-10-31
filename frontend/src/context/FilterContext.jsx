@@ -19,8 +19,6 @@ export function FiltersProvider({ children }) {
 
   const [products, setProducts] = useState([]);
 
-  // const [userLogged, setUserLogged] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
       try {

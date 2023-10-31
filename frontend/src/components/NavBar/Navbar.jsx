@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="nav-air">
         <div className="logo-air">
           <Link to="/">
-            <img src="Logo.png" alt="" />
+            <img src="/Logo.png" alt="" />
           </Link>
         </div>
         {!show ? (
@@ -63,7 +63,7 @@ const Navbar = () => {
             <div className="light-color">
               {filters.guests ? filters.guests : "Addguests"}
             </div>
-            <img src="icons/button-search.png" alt="search-button" />
+            <img src="/icons/button-search.png" alt="search-button" />
           </div>
         ) : null}
         <SearchBar show={show} setShow={setShow} className="custom-modal" />

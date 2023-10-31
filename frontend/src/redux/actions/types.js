@@ -7,3 +7,6 @@ export const SEND_TICKET = "SEND_TICKET";
 
 export const INCREASE_GUESTS = "INCREASE_GUESTS";
 export const DECREASE_GUESTS = "DECREASE_GUESTS";
+
+export const GET_USERS = "GET_USERS";
+export const SEND_USERS = "SEND_USERS";
