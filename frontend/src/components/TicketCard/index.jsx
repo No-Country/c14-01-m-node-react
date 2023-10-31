@@ -17,6 +17,9 @@ function parseDate(date) {
 };
 
 export default function TicketCard(props) {
+
+  let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+
   const { title, price, image, checkinDate, checkoutDate, location, id, fetchGetTickets, guests } = props;
 
   const days = numberOfDays(checkinDate, checkoutDate);
@@ -44,7 +47,7 @@ export default function TicketCard(props) {
         <div className={styles.head}>
           <Card.Img className={styles.img} variant='top' src={image} />
           <Card.Title as='div' className={styles.title}>
-            {title}
+            <div>{title}</div>
             <div className={styles.desc}>{location}</div>
           </Card.Title>
         </div>
@@ -59,6 +62,7 @@ export default function TicketCard(props) {
           </div>
         </Card.Text>
       </Card.Body>
+      <Button variant='danger' className={styles.delete} onClick={handleClickDelete}>DELETE</Button>
     </Card>
   )
 };

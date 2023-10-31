@@ -2,6 +2,16 @@
   z-index: 10000 !important;
 }
 
+.header button {
+  padding-right: 55px !important;
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    left: -10px !important;
+  }
+}
+
 .body {
   padding-top: 0px !important;
 }

@@ -37,7 +37,7 @@ export default function Tickets() {
       </button>
 
       <Modal className={styles.modal} show={show} centered onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header className={styles.header} closeButton>
           <Modal.Title>Your reservations!</Modal.Title>
         </Modal.Header>
         <Modal.Body className={styles.body}>
