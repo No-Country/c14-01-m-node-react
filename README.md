@@ -17,7 +17,6 @@ The application seeks to offer a tool to potential users to reserve a property, 
 ![](./frontend/public/Captura%20de%20pantalla%202023-10-30%20103915.png)
 ![](./frontend/public/Captura%20de%20pantalla%202023-10-30%20104217.png)
 
-<hr/>
 
 ## ✔ Backend
 
@@ -71,6 +70,8 @@ The application seeks to offer a tool to potential users to reserve a property, 
 |:-:|:-:|
 | **Vero Valdez**| **Ramiro Morard**|
 | <a href="https://github.com/veronicajujuy" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/vmvaldez/ " target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="github.com/MorardRamiro" target="_blak"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="linkedin.com/in/morardramiro" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+
+<hr/>
 
 ## ✔ Testing
 
