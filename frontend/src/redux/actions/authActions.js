@@ -43,7 +43,7 @@ export const logOut = () => {
     })
       .then((response) => response.json())
       .then((obj) => {
-        getTokenToUser.drop();
+        // getTokenToUser.drop();
         localStorage.removeItem("auth_token");
         dispatch({ type: LOG_OUT, payload: obj });
       });
