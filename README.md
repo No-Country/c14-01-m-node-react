@@ -46,9 +46,12 @@ The application seeks to offer a tool to potential users to reserve a property, 
 |:-:|:-:|
 | **Martin Berdun**| **Arteaga Lucas**|
 | <a href="https://github.com/MartinBerdun " target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/martinberdun/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Lucas94-17" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/lucas-fernando-arteaga-ponssa-bb35b9238/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
-</hr>
+
+
+<hr/>
 
 ## ✔ Frontend
+
 
 ### 👉🏻 Task List ✅
 
