@@ -40,3 +40,8 @@
 .desc {
   color: #717171;
 }
+
+.x {
+  width: 40px;
+  float: inline-end;
+}
