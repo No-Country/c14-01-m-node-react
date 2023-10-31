@@ -45,7 +45,7 @@ The application seeks to offer a tool to potential users to reserve a property, 
 | <img src="./frontend/public/Imagen de WhatsApp 2023-10-31 a las 14.03.37_ee63cfb5.jpg" width=60>| <img src="./frontend/public/mi_foto.png" width=70>|
 |:-:|:-:|
 | **Martin Berdun**| **Arteaga Lucas**|
-| <a href="https://github.com/MartinBerdun "><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/martinberdun/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Lucas94-17"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/lucas-fernando-arteaga-ponssa-bb35b9238/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+| <a href="https://github.com/MartinBerdun " target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/martinberdun/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="https://github.com/Lucas94-17" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/lucas-fernando-arteaga-ponssa-bb35b9238/" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 </hr>
 
 ## ✔ Frontend
@@ -67,7 +67,7 @@ The application seeks to offer a tool to potential users to reserve a property, 
 | <img src="./frontend/public/Imagen de WhatsApp 2023-10-31 a las 14.08.09_854c8a55.jpg" width=100>| <img src="" width=70>|
 |:-:|:-:|
 | **Vero Valdez**| **Ramiro Morard**|
-| <a href="https://github.com/veronicajujuy"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/vmvaldez/"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="github.com/MorardRamiro"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="linkedin.com/in/morardramiro"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
+| <a href="https://github.com/veronicajujuy" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="https://www.linkedin.com/in/vmvaldez/ " target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> | <a href="github.com/MorardRamiro" target="_blak"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="linkedin.com/in/morardramiro" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> |
 
 ## ✔ Testing
 
@@ -83,4 +83,4 @@ The application seeks to offer a tool to potential users to reserve a property, 
 | <img src="./frontend/public/Sin título.png" width=120>| |
 |:-:|:-:
 | **Marcelo Gereniere**|
-| <a href="https://github.com/marcelogere"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href=""><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> 
+| <a href="https://github.com/marcelogere" target="_blank"><img src="https://img.shields.io/badge/github-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white"/></a> <a href="" target="_blank"><img src="https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a> 
