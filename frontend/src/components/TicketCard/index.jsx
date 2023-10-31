@@ -14,7 +14,7 @@ function parseDate(date) {
 };
 
 export default function TicketCard(props) {
-  const { title, description, price, image, checkinDate, checkoutDate, location } = props;
+  const { title, price, image, checkinDate, checkoutDate, location } = props;
 
   const days = numberOfDays(checkinDate, checkoutDate);
 
@@ -23,12 +23,12 @@ export default function TicketCard(props) {
       <Card.Body className={styles.body}>
         <div className={styles.head}>
           <Card.Img className={styles.img} variant='top' src={image} />
-          <Card.Title className={styles.title}>
+          <Card.Title as='div' className={styles.title}>
             {title}
-            <div className={styles.desc}>{description}</div>
+            <div className={styles.desc}>{location}</div>
           </Card.Title>
         </div>
-        <Card.Text className={styles.txt}>
+        <Card.Text as='div' className={styles.txt}>
           <div>{parseDate(checkinDate)} - {parseDate(checkoutDate)}</div>
           <div className={styles.total}>
             <div>${price} x {days} nights</div>

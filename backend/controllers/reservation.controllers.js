@@ -99,8 +99,8 @@ export const updateReservation = async (req, res) => {
   };
 
 export const deleteReservations = async (req, res) => {
-    try {
-        const {id} = req.params;
+  const {id} = req.params;
+    try {    
         
         const reservation = await reservartionModel.findByIdAndDelete(id);
 
