@@ -41,18 +41,21 @@ export default function Tickets() {
           <Modal.Title>Your reservations!</Modal.Title>
         </Modal.Header>
         <Modal.Body className={styles.body}>
-          {tickets?.reservations?.map((ticket) => (
+          {tickets?.reservations?.length ? tickets?.reservations?.map((ticket) => (
             <TicketCard
+              id={ticket._id}
               key={ticket._id}
               title={ticket.title}
               description={ticket.description}
               price={ticket.price}
-              /* image={ticket.images[0]} */
+              image={ticket.image}
               checkinDate={ticket.initialDate}
               checkoutDate={ticket.endDate}
               location={ticket.location}
+              guests={ticket.guests}
+              fetchGetTickets={fetchGetTickets}
             />
-          ))}
+          )) : <p className={styles.message}>You don't have any reservation yet.</p>}
         </Modal.Body>
       </Modal>
     </div>
