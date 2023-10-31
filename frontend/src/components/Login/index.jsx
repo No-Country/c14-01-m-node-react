@@ -64,7 +64,7 @@ export default function Login(props) {
 
       <Modal show={show} centered onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Welcome to Airbnb 2!</Modal.Title>
+          <Modal.Title>Welcome to AirStay!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
