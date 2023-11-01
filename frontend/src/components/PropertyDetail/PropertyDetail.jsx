@@ -5,39 +5,45 @@ import "./style.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Calendar } from "primereact/calendar";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { decodeToken } from "react-jwt";
 import Messages from "../Messages/ModalMessages";
 import { sendTickets } from "../../redux/actions/ticketsActions";
 import { Form } from "react-bootstrap";
+import { FiltersContext } from "../../context/FilterContext";
 
 const PropertyDetail = () => {
-  const { filters, getFilterByLocation } = useFilters();
+  const { filters } = useFilters();
+  const { product, loadProduct } = useContext(FiltersContext);
   const params = useParams();
   const { id } = params;
-  const location = getFilterByLocation(id);
+  // const location = getFilterByLocation(id);
   const [dates, setDates] = useState([
     filters.checkInDate ? new Date(filters.checkInDate) : new Date(),
     filters.checkOutDate ? new Date(filters.checkOutDate) : new Date(),
   ]);
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
+  const [error, setError] = useState("");
 
   // traer datos del usuario:
   const { user } = useSelector((state) => state?.auth);
 
+  useEffect(() => {
+    loadProduct(id);
+  }, []);
   // valores a enviar de la reserva
   const [values, setValue] = useState({
     first_name: "",
     last_name: "",
     email: "",
     id_location: id,
-    title: location.title,
-    price: location.price,
-    location: location.location,
-    image: location.images[0],
+    title: product?.title,
+    price: product?.price,
+    location: product?.location,
+    image: product?.images[0],
     initialDate: filters.checkInDate ? filters.checkInDate : new Date(),
     endDate: filters.checkOutDate ? filters.checkOutDate : new Date(),
     guests: filters.guests,
@@ -73,11 +79,15 @@ const PropertyDetail = () => {
 
   const handleChangeCalendar = (e) => {
     setDates(e.value);
-    setValue((prev) => ({
-      ...prev,
-      initialDate: e.value[0],
-      endDate: e.value[1],
-    }));
+    if (!e.value) setError("CheckIn and CheckOut dates must have a value");
+    else {
+      setError("");
+      setValue((prev) => ({
+        ...prev,
+        initialDate: e.value[0],
+        endDate: e.value[1],
+      }));
+    }
   };
   const handleChangeGuests = (e) => {
     const newGuests = e.target.value;
@@ -97,7 +107,6 @@ const PropertyDetail = () => {
     if (validated) {
       if (user.token) {
         parseToken(user.token);
-        console.log("values", values);
       }
       if (!user.token) {
         setModalShow(true);
@@ -110,22 +119,26 @@ const PropertyDetail = () => {
       }
     }
   };
+
   return (
     <div className="container-detail-main">
       <div className="container-detail">
-        <h1 className="location-title">{location?.title}</h1>
-        <h1 className="location-subtitle">{location?.description}</h1>
+        <h1 className="location-title">{product?.title}</h1>
+        <h1 className="location-subtitle">{product?.description}</h1>
 
         <div className="container-images">
-          {location?.images.map((image, i) => (
+          {product?.images.map((image, i) => (
             <div className={`photo-${i}`} key={i}>
               <img className="photo-img" src={image} />
             </div>
           ))}
         </div>
+        <div className="container-image">
+          <img className="photo-img" src={product?.images[0]} />
+        </div>
         <div className="container-bottom">
           <div className="bottom-left">
-            <h1>{location?.description}</h1>
+            <h1>{product?.description}</h1>
             <p>
               It has a large kitchen-dining room and a breakfast room where you
               can enjoy your meals in a nice and bright space. Premium furniture
@@ -137,7 +150,7 @@ const PropertyDetail = () => {
             </p>
             <h2>What this place offer</h2>
             <ul>
-              {location?.amenities.map((item, i) => (
+              {product?.amenities.map((item, i) => (
                 <li key={i}>{item}</li>
               ))}
             </ul>
@@ -145,7 +158,7 @@ const PropertyDetail = () => {
           <div className="bottom-right">
             <Card>
               <Card.Body>
-                <Card.Title>{`$ ${location?.price} USD per night`}</Card.Title>
+                <Card.Title>{`$ ${product?.price} USD per night`}</Card.Title>
                 <Form
                   noValidate
                   validated={validated}
@@ -155,13 +168,28 @@ const PropertyDetail = () => {
                   <div>
                     <label>CheckIn - CheckOut</label>
                     <div className="input-detail">
-                      <Calendar
-                        value={dates}
-                        onChange={(e) => handleChangeCalendar(e)}
-                        numberOfMonths={2}
-                        selectionMode="range"
-                        className="input-detail"
-                      />
+                      <Form.Group>
+                        <span className="calendar-1">
+                          <Calendar
+                            value={dates}
+                            onChange={(e) => handleChangeCalendar(e)}
+                            numberOfMonths={2}
+                            selectionMode="range"
+                            className="input-detail"
+                          />
+                          <span className="error-message">{error}</span>
+                        </span>
+                        <span className="calendar-2">
+                          <Calendar
+                            value={dates}
+                            onChange={(e) => handleChangeCalendar(e)}
+                            numberOfMonths={1}
+                            selectionMode="range"
+                            className="input-detail"
+                          />
+                          <span className="error-message">{error}</span>
+                        </span>
+                      </Form.Group>
                     </div>
                     <label>Guests</label>
                     <div className="input-detail">
@@ -187,7 +215,7 @@ const PropertyDetail = () => {
                                new Date(values.initialDate)) /
                                (1000 * 60 * 60 * 24) +
                                1) *
-                             parseInt(location.price)
+                             parseInt(product?.price)
                            : 0
                        } USD`}
                     </label>

@@ -117,3 +117,19 @@
   background-position: right calc(0.375em + 0.1875rem) center;
   background-repeat: no-repeat;
 }
+
+@media (max-width: 730px) {
+  .profile-container-sup {
+    margin-top: 50px;
+    width: 100%;
+  }
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .profile-left {
+    margin-top: 50px;
+    width: 80%;
+  }
+}
