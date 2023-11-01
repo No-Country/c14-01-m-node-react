@@ -7,7 +7,6 @@ import SearchBar from "./SearchBar";
 import useFilters from "../../utils/useFilters";
 import formatDateToCustomFormat from "../../utils/dateConvert";
 import { decodeToken } from "react-jwt";
-import BottomNav from "../BottomNav/BottomNav";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state?.auth);

@@ -15,7 +15,7 @@ import { Form } from "react-bootstrap";
 import { FiltersContext } from "../../context/FilterContext";
 
 const PropertyDetail = () => {
-  const { filters, getFilterByLocation } = useFilters();
+  const { filters } = useFilters();
   const { product, loadProduct } = useContext(FiltersContext);
   const params = useParams();
   const { id } = params;
@@ -107,7 +107,6 @@ const PropertyDetail = () => {
     if (validated) {
       if (user.token) {
         parseToken(user.token);
-        console.log("values", values);
       }
       if (!user.token) {
         setModalShow(true);
@@ -120,6 +119,7 @@ const PropertyDetail = () => {
       }
     }
   };
+
   return (
     <div className="container-detail-main">
       <div className="container-detail">
@@ -132,6 +132,9 @@ const PropertyDetail = () => {
               <img className="photo-img" src={image} />
             </div>
           ))}
+        </div>
+        <div className="container-image">
+          <img className="photo-img" src={product?.images[0]} />
         </div>
         <div className="container-bottom">
           <div className="bottom-left">
@@ -166,14 +169,26 @@ const PropertyDetail = () => {
                     <label>CheckIn - CheckOut</label>
                     <div className="input-detail">
                       <Form.Group>
-                        <Calendar
-                          value={dates}
-                          onChange={(e) => handleChangeCalendar(e)}
-                          numberOfMonths={2}
-                          selectionMode="range"
-                          className="input-detail"
-                        />
-                        <span className="error-message">{error}</span>
+                        <span className="calendar-1">
+                          <Calendar
+                            value={dates}
+                            onChange={(e) => handleChangeCalendar(e)}
+                            numberOfMonths={2}
+                            selectionMode="range"
+                            className="input-detail"
+                          />
+                          <span className="error-message">{error}</span>
+                        </span>
+                        <span className="calendar-2">
+                          <Calendar
+                            value={dates}
+                            onChange={(e) => handleChangeCalendar(e)}
+                            numberOfMonths={1}
+                            selectionMode="range"
+                            className="input-detail"
+                          />
+                          <span className="error-message">{error}</span>
+                        </span>
                       </Form.Group>
                     </div>
                     <label>Guests</label>
