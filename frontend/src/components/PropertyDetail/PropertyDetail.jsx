@@ -6,9 +6,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Calendar } from "primereact/calendar";
 import { useCallback, useContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { decodeToken } from "react-jwt";
 import Messages from "../Messages/ModalMessages";
 import { sendTickets } from "../../redux/actions/ticketsActions";
 import { Form } from "react-bootstrap";
@@ -16,7 +15,7 @@ import { FiltersContext } from "../../context/FilterContext";
 
 const PropertyDetail = () => {
   const { filters } = useFilters();
-  const { product, loadProduct } = useContext(FiltersContext);
+  const { product, loadProduct, userLog } = useContext(FiltersContext);
   const params = useParams();
   const { id } = params;
   // const location = getFilterByLocation(id);
@@ -29,21 +28,19 @@ const PropertyDetail = () => {
   const [error, setError] = useState("");
 
   // traer datos del usuario:
-  const { user } = useSelector((state) => state?.auth);
-
   useEffect(() => {
     loadProduct(id);
   }, []);
   // valores a enviar de la reserva
   const [values, setValue] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    id_location: id,
-    title: product?.title,
-    price: product?.price,
-    location: product?.location,
-    image: product?.images[0],
+    first_name: userLog ? userLog.first_name : "",
+    last_name: userLog ? userLog.last_name : "",
+    email: userLog ? userLog.email : "",
+    id_location: "",
+    title: "",
+    price: "",
+    location: "",
+    image: "",
     initialDate: filters.checkInDate ? filters.checkInDate : new Date(),
     endDate: filters.checkOutDate ? filters.checkOutDate : new Date(),
     guests: filters.guests,
@@ -51,24 +48,6 @@ const PropertyDetail = () => {
 
   // validacion del campo guest
   const [validated, setValidated] = useState(false);
-
-  // decodificar token
-  const parseToken = async () => {
-    const myDecodedToken = user.token ? await decodeToken(user.token) : null;
-    if (myDecodedToken) {
-      const nameParts = myDecodedToken.name.split(" ");
-      setValue((prev) => ({
-        ...prev,
-        first_name: nameParts[0],
-        last_name: nameParts.length > 1 ? nameParts.slice(1).join(" ") : "",
-        email: myDecodedToken.email,
-      }));
-    }
-  };
-
-  useEffect(() => {
-    parseToken(user.token);
-  }, [user.token]);
 
   // redux
   const dispatch = useDispatch();
@@ -105,21 +84,25 @@ const PropertyDetail = () => {
     }
     setValidated(true);
     if (validated) {
-      if (user.token) {
-        parseToken(user.token);
-      }
-      if (!user.token) {
+      if (!userLog) {
         setModalShow(true);
       } else {
+        setValue((prev) => ({
+          ...prev,
+          id_location: id,
+          title: product.title,
+          price: product.price,
+          location: product.location,
+          image: product.images[0],
+        }));
         console.log("Valores a enviar", values);
-        if (user.status) {
+        if (userLog) {
           setShow(true);
           sendReservation();
         }
       }
     }
   };
-
   return (
     <div className="container-detail-main">
       <div className="container-detail">
