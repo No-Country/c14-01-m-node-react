@@ -58,3 +58,25 @@ a {
   width: 100%;
   z-index: 2;
 }
+
+@media (max-width: 660px) {
+  .container-categories-general {
+    margin-top: 5px;
+    position: relative;
+  }
+  .container-categories {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .icon-container {
+    margin: 0 7px;
+  }
+  .filters {
+    position: absolute;
+    top: 90px;
+    right: 80px;
+  }
+}
