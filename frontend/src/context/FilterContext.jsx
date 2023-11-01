@@ -18,6 +18,7 @@ export function FiltersProvider({ children }) {
   });
 
   const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,10 +31,21 @@ export function FiltersProvider({ children }) {
     };
 
     fetchData();
-  }, []);
+  }, [products]);
+
+  const loadProduct = async (id) => {
+    try {
+      const productData = await getLocations.oneLocation(id);
+      setProduct(productData);
+    } catch (error) {
+      console.error("Error al cargar el producto individual:", error);
+    }
+  };
 
   return (
-    <FiltersContext.Provider value={{ filters, setFilters, products }}>
+    <FiltersContext.Provider
+      value={{ filters, setFilters, products, product, loadProduct }}
+    >
       {children}
     </FiltersContext.Provider>
   );

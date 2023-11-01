@@ -21,13 +21,9 @@ function ProfileDetail() {
         <div className="profile-left">
           <h1>Your Profile</h1>
           <div className="profile-info">
-            <div className="profile-icons-div">
-              <div>
-                <FaUserCircle className="profile-icons" />
-              </div>
-              <div>{`Name: ${user && user.first_name}  ${
-                user && user.last_name
-              }`}</div>
+            <div>
+              <FaUserCircle className="profile-icons" />
+              {`Name: ${user && user.first_name}  ${user && user.last_name}`}
             </div>
             <div>
               <FaBirthdayCake className="profile-icons" />{" "}

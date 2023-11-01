@@ -81,6 +81,12 @@
 
 .logo-air {
   position: relative;
+  width: 15%;
+}
+
+.air-image {
+  width: 100%;
+  max-width: 150px;
 }
 .custom-modal {
   position: absolute !important;
@@ -153,4 +159,35 @@
   color: #fff;
   background-color: var(--primary);
   padding: 2px !important;
+}
+
+@media (max-width: 992px) {
+  .nav-air {
+    position: relative;
+  }
+  .air-right {
+    display: none;
+  }
+}
+
+@media (max-width: 730px) {
+  .modal-custom-body {
+    margin-top: 10px;
+  }
+  .nav-air {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .logo-air {
+    display: none;
+  }
+  .dropdown-air {
+    position: absolute;
+    top: 25px;
+  }
+  .search-custom-air {
+    height: fit-content;
+    flex-wrap: wrap;
+  }
 }

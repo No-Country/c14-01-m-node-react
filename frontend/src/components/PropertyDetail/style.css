@@ -97,3 +97,53 @@
   border: 1px solid var(--grey);
   border-radius: 0px;
 }
+
+.container-image {
+  display: none;
+}
+
+.calendar-2 {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .container-detail {
+    margin-top: 20px;
+  }
+  .container-bottom {
+    flex-direction: column;
+  }
+  .bottom-left,
+  .bottom-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 730px) {
+  .card {
+    min-width: 350px;
+    width: 350px;
+    padding-left: 20px;
+    margin-bottom: 100px;
+  }
+
+  .card-body {
+    width: 80%;
+  }
+
+  .input-detail {
+    width: 280px;
+  }
+  .container-images {
+    display: none;
+  }
+  .container-image {
+    display: block;
+  }
+  .calendar-1 {
+    display: none;
+  }
+  .calendar-2 {
+    display: initial;
+  }
+}

@@ -14,7 +14,10 @@ const useFilters = () => {
           filters.categories == "all" ||
           product.categories.includes(filters.categories);
         const locationFilter =
-          !filters.location || product.location.includes(filters.location);
+          !filters.location ||
+          product.location
+            .toUpperCase()
+            .includes(filters.location.toUpperCase());
         const amenitiesFilter =
           filters.amenities.length == 0 ||
           product.amenities.some((item) => filters.amenities.includes(item));

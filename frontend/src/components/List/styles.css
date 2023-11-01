@@ -57,3 +57,9 @@
   font-size: 14px;
   font-weight: 400;
 }
+
+@media (max-width: 768px) {
+  .container-cards {
+    margin-top: 20px;
+  }
+}
