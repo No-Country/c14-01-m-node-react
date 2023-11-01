@@ -169,26 +169,14 @@ const PropertyDetail = () => {
                     <label>CheckIn - CheckOut</label>
                     <div className="input-detail">
                       <Form.Group>
-                        <span className="calendar-1">
-                          <Calendar
-                            value={dates}
-                            onChange={(e) => handleChangeCalendar(e)}
-                            numberOfMonths={2}
-                            selectionMode="range"
-                            className="input-detail"
-                          />
-                          <span className="error-message">{error}</span>
-                        </span>
-                        <span className="calendar-2">
-                          <Calendar
-                            value={dates}
-                            onChange={(e) => handleChangeCalendar(e)}
-                            numberOfMonths={1}
-                            selectionMode="range"
-                            className="input-detail"
-                          />
-                          <span className="error-message">{error}</span>
-                        </span>
+                        <Calendar
+                          value={dates}
+                          onChange={(e) => handleChangeCalendar(e)}
+                          numberOfMonths={2}
+                          selectionMode="range"
+                          className="input-detail"
+                        />
+                        <span className="error-message">{error}</span>
                       </Form.Group>
                     </div>
                     <label>Guests</label>
