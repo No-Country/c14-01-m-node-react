@@ -18,8 +18,6 @@ function parseDate(date) {
 
 export default function TicketCard(props) {
 
-  let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-
   const { title, price, image, checkinDate, checkoutDate, location, id, fetchGetTickets, guests } = props;
 
   const days = numberOfDays(checkinDate, checkoutDate);
