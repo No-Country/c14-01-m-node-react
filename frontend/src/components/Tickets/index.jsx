@@ -5,8 +5,11 @@ import TicketCard from "../TicketCard";
 import Modal from "react-bootstrap/Modal";
 import styles from "./tickets.module.css";
 import { useJwt } from "react-jwt";
+import { HiClipboardCheck } from "react-icons/hi";
 
-export default function Tickets() {
+export default function Tickets(props) {
+  const { mobile = false } = props;
+
   const [show, setShow] = useState(false);
 
   const { token } = useSelector(state => state?.auth?.user);
@@ -33,7 +36,7 @@ export default function Tickets() {
   return (
     <div>
       <button className={styles.button} onClick={handleShow}>
-        Reservations
+        {mobile ? <HiClipboardCheck className="bottom-icon" /> : "Reservations"}
       </button>
 
       <Modal className={styles.modal} show={show} centered onHide={handleClose}>

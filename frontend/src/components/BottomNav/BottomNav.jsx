@@ -4,6 +4,7 @@ import { HiClipboardCheck } from "react-icons/hi";
 import { BiUserCircle } from "react-icons/bi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Tickets from "../Tickets";
 
 const BottomNav = () => {
   const { user } = useSelector((state) => state?.auth);
@@ -16,7 +17,7 @@ const BottomNav = () => {
             <img src="/airlogo.png" alt="logo" />
           </div>
         </Link>
-        <HiClipboardCheck className="bottom-icon" />
+        <Tickets mobile={true} />
         <Link to="/profile/detail">
           {user.token ? <FaUser className="bottom-icon" /> : null}
         </Link>
