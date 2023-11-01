@@ -1,6 +1,6 @@
 <img aling="center" src="./frontend/public/Imagen de WhatsApp 2023-10-31 a las 19.57.48_61d6bbcc.jpg" width = "350"></img>
 
-### AirStay (Clon AirBnb)
+# AirStay (Clon AirBnb)
 
 <img src="./frontend/public/Imagen de WhatsApp 2023-10-31 a las 19.57.48_3cfb8188.jpg" width="30"></img>
 
@@ -8,20 +8,34 @@ The application seeks to offer a tool to potential users to reserve a property, 
 
 <hr/>
 
-**🚀DEMO**
+## **📑 GUIDE**
+
+<ol>
+     <li><a href="#demo">Demo</a></li>
+     <li><a href="#images">Images</a></li>
+     <li><a href="#backend">Backend</a></li>
+     <li><a href="#fronted">Fronted</a></li>
+     <li><a href="#testing">Testing</a></li>
+</ol>
 
 <hr/>
 
-**📸IMAGES**
-
-![](./frontend/public/Captura%20de%20pantalla%202023-10-30%20103728.png)
-![](./frontend/public/Captura%20de%20pantalla%202023-10-30%20103849.png)
-![](./frontend/public/Captura%20de%20pantalla%202023-10-30%20103915.png)
-![](./frontend/public/Captura%20de%20pantalla%202023-10-30%20104217.png)
+<div id="demo"> <h2><strong>🚀DEMO </strong></h2></div>
 
 <hr/>
 
-## ✔ Backend
+<div id="images"> <h2> <strong>📸IMAGES</strong></h2></div>
+
+![](./frontend/public/Captura%20de%20pantalla%202023-11-01%20114137.png)
+![](./frontend/public/Captura%20de%20pantalla%202023-11-01%20114211.png)
+![](./frontend/public/Captura%20de%20pantalla%202023-11-01%20114229.png)
+![](./frontend/public/Captura%20de%20pantalla%202023-11-01%20114246.png)
+![](./frontend/public/Captura%20de%20pantalla%202023-11-01%20114258.png)
+
+<hr/>
+
+
+<div id="backend"> <h2> <strong> 💽 Backend</strong></h2></div>
 
 ### 👉🏻 Task List ✅
 
@@ -51,8 +65,7 @@ The application seeks to offer a tool to potential users to reserve a property, 
 
 <hr/>
 
-## ✔ Frontend
-
+<div id="fronted"> <h2> <strong> 🖼️ Frontend</strong></h2></div>
 
 ### 👉🏻 Task List ✅
 
@@ -75,7 +88,7 @@ The application seeks to offer a tool to potential users to reserve a property, 
 
 <hr/>
 
-## ✔ Testing
+<div id="testing"> <h2> <strong>🕵️ Testing</strong></h2></div>
 
 ### 👉🏻 Task List ✅
 - The testing part was carried out with the Cypress tool
