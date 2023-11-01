@@ -26,12 +26,6 @@ const PropertyDetail = () => {
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
-
-  // traer datos del usuario:
-  useEffect(() => {
-    loadProduct(id);
-  }, []);
-  // valores a enviar de la reserva
   const [values, setValue] = useState({
     first_name: userLog ? userLog.first_name : "",
     last_name: userLog ? userLog.last_name : "",
@@ -45,6 +39,26 @@ const PropertyDetail = () => {
     endDate: filters.checkOutDate ? filters.checkOutDate : new Date(),
     guests: filters.guests,
   });
+
+  // traer datos del usuario:
+  useEffect(() => {
+    loadProduct(id);
+  }, []);
+
+  useEffect(() => {
+    setValue((prev) => ({
+      ...prev,
+      first_name: userLog ? userLog.first_name : "",
+      last_name: userLog ? userLog.last_name : "",
+      email: userLog ? userLog.email : "",
+      id_location: id,
+      title: product ? product.title : "",
+      price: product ? product.price : "",
+      location: product ? product.location : "",
+      image: product ? product.images[0] : "",
+    }));
+  }, [product]);
+  // valores a enviar de la reserva
 
   // validacion del campo guest
   const [validated, setValidated] = useState(false);
@@ -90,10 +104,10 @@ const PropertyDetail = () => {
         setValue((prev) => ({
           ...prev,
           id_location: id,
-          title: product.title,
-          price: product.price,
-          location: product.location,
-          image: product.images[0],
+          title: product && product.title,
+          price: product && product.price,
+          location: product && product.location,
+          image: product && product.images[0],
         }));
         console.log("Valores a enviar", values);
         if (userLog) {
@@ -103,6 +117,7 @@ const PropertyDetail = () => {
       }
     }
   };
+
   return (
     <div className="container-detail-main">
       <div className="container-detail">
