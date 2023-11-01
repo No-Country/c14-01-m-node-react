@@ -1,17 +1,19 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form } from "react-bootstrap";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Calendar } from "primereact/calendar";
 import { sendUsers } from "../../redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
+import { FiltersContext } from "../../context/FilterContext";
 
 const ProfileEdit = () => {
+  const { userLog } = useContext(FiltersContext);
   const { user } = useSelector((state) => state?.user);
   const [values, setValues] = useState({
-    first_name: user.first_name,
-    last_name: user.last_name,
-    birthday: user.birthday,
+    first_name: "",
+    last_name: "",
+    birthday: "",
   });
   const [date, setDate] = useState(new Date(user?.birthday));
   const [error, setError] = useState("");
@@ -23,6 +25,16 @@ const ProfileEdit = () => {
   const sendUser = useCallback((values, id) => {
     dispatch(sendUsers(values, id));
   });
+
+  useEffect(() => {
+    setValues((prev) => ({
+      ...prev,
+      first_name: user && user.first_name,
+      last_name: user && user.last_name,
+      birthday: user && user.birthday,
+    }));
+    setDate(new Date(user?.birthday));
+  }, [user]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
