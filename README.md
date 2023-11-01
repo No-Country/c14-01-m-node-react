@@ -1,6 +1,8 @@
-<img aling="center" src="./frontend/public/bnb_billboard_01-2000x1125.jpg" width = "350"></img>
+<img aling="center" src="./frontend/public/Imagen de WhatsApp 2023-10-31 a las 19.57.48_61d6bbcc.jpg" width = "350"></img>
+
 ### AirStay (Clon AirBnb)
 
+<img src="./frontend/public/Imagen de WhatsApp 2023-10-31 a las 19.57.48_3cfb8188.jpg" width="30"></img>
 
 The application seeks to offer a tool to potential users to reserve a property, with the advantage that the tool allows you to create a user and thus log in. That user can have two types of profiles, being a client who can reserve a property or a tenant, whose characteristic is to upload property. This tool has a home page, where the properties are displayed and where any non-logged user can view it.
 
