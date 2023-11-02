@@ -85,7 +85,7 @@ export const emailTemplate = {
                                                                             <table cellpadding="0" cellspacing="0" width="100%">
                                                                                 <tbody>
                                                                                     <tr>
-                                                                                        <td align="center" class="esd-block-image es-p10b" style="font-size: 0px;"><a target="_blank"><img src="https://fbixscp.stripocdn.email/content/guids/CABINET_57d9cb835aaf9ef9e5d9447731d1c2dbabb33ef50923a4b40bd8b54c76ed61a9/images/logo.png" alt="Logo" style="display: block; font-size: 12px;" width="185" title="Logo"></a></td>
+                                                                                        <td align="center" class="esd-block-image es-p10b" style="font-size: 0px;"><a target="_blank"><img src="https://i.postimg.cc/02bzD8tt/logoAir.png" alt="Logo" style="display: block; font-size: 12px;" width="185" title="Logo"></a></td>
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
@@ -286,7 +286,7 @@ export const emailTemplate = {
                                                                                 <tbody>
                                                                                     <tr>
                                                                                         <td align="center" class="esd-block-text es-p10t es-p10b">
-                                                                                            <p>Got a question? Email us at <a target="_blank" href="mailto:">support@</a>airbnb.<a target="_blank" href="mailto:">com</a> or give us a call at <a target="_blank" href="tel:">+000 123 456</a>.</p>
+                                                                                            <p>Got a question? Email us at <a target="_blank" href="mailto:">support@</a>airstay.<a target="_blank" href="mailto:">com</a> or give us a call at <a target="_blank" href="tel:">+000 123 456</a>.</p>
                                                                                         </td>
                                                                                     </tr>
                                                                                 </tbody>
@@ -333,7 +333,7 @@ export const emailTemplate = {
                                                                                     </tr>
                                                                                     <tr>
                                                                                         <td align="center" class="esd-block-text es-p35b">
-                                                                                            <p>Airbnb © 2023 All Rights Reserved.</p>
+                                                                                            <p>Air Stay © 2023 All Rights Reserved.</p>
                                                                                             <p>4562 Hazy Panda Limits, Chair Crossing, Kentucky, US, 607898</p>
                                                                                         </td>
                                                                                     </tr>
