@@ -59,17 +59,16 @@ export function FiltersProvider({ children }) {
     };
 
     const fetchUserLog = async () => {
-      console.log(user);
-      const parse = await parseToken(user.token); // Espera a que la promesa se resuelva.
-      setUserLog(parse); // Asigna el valor resultante.
+      const parse = await parseToken(user.token);
+      setUserLog(parse);
     };
 
-    fetchData(); // Llama a esta función para cargar los datos antes de llamar a fetchUserLog.
+    fetchData();
     fetchUserLog();
   }, [user]);
 
   useEffect(() => {
-    console.log(userLog); // Esto debería mostrar el valor actualizado de `userLog`.
+    console.log(userLog);
   }, [userLog]);
 
   const loadProduct = async (id) => {

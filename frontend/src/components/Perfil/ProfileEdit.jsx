@@ -1,14 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form } from "react-bootstrap";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Calendar } from "primereact/calendar";
 import { sendUsers } from "../../redux/actions/userActions";
 import { useNavigate } from "react-router-dom";
-import { FiltersContext } from "../../context/FilterContext";
 
 const ProfileEdit = () => {
-  const { userLog } = useContext(FiltersContext);
   const { user } = useSelector((state) => state?.user);
   const [values, setValues] = useState({
     first_name: "",

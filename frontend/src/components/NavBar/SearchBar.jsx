@@ -36,6 +36,7 @@ function SearchBar({ show, setShow }) {
       [name]: value,
     }));
   };
+
   return (
     <>
       <Modal
