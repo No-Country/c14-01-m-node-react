@@ -59,6 +59,13 @@ a {
   z-index: 2;
 }
 
+@media (max-width: 990px) {
+  .container-categories-general {
+    margin-top: 5px;
+    position: relative;
+  }
+}
+
 @media (max-width: 660px) {
   .container-categories-general {
     margin-top: 5px;
