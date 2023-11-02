@@ -1,7 +1,8 @@
 import axios from "axios";
 import { GET_USERS, SEND_USERS } from "./types";
 
-const BASE_URL = "http://localhost:8080/api/users";
+//const BASE_URL = "http://localhost:8080/api/users";
+const BASE_URL = "https://c14-01-m-node-react-production.up.railway.app/api/users"
 
 export const getUsers = (email) => {
   return (dispatch) => {

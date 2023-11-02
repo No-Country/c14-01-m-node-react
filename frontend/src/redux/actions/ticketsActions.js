@@ -1,6 +1,7 @@
 import { GET_TICKETS, SEND_TICKET, DELETE_TICKET } from "./types";
 
-const BASE_URL = "http://localhost:8080/api/reservations";
+//const BASE_URL = "http://localhost:8080/api/reservations";
+const BASE_URL = "https://c14-01-m-node-react-production.up.railway.app/api/reservations"
 
 export const getTickets = (email) => {
   return (dispatch) => {
