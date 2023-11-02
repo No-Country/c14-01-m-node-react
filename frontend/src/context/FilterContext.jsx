@@ -31,7 +31,7 @@ export function FiltersProvider({ children }) {
     };
 
     fetchData();
-  }, [products]);
+  }, []);
 
   const loadProduct = async (id) => {
     try {

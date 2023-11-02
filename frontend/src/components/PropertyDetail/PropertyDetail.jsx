@@ -112,7 +112,7 @@ const PropertyDetail = () => {
         setModalShow(true);
       } else {
         console.log("Valores a enviar", values);
-        if (user.status) {
+        if (user.token) {
           setShow(true);
           sendReservation();
         }
