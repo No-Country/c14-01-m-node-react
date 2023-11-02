@@ -26,16 +26,6 @@ const useFilters = () => {
           !filters.checkOutDate ||
           (new Date(product.initialDate) <= new Date(filters.checkInDate) &&
             new Date(product.endDate) >= new Date(filters.checkOutDate));
-        console.log(
-          "product",
-          new Date(product.initialDate),
-          new Date(product.endDate)
-        );
-        console.log(
-          "filters",
-          new Date(filters.checkInDate),
-          new Date(filters.checkOutDate)
-        );
         return (
           priceFilter &&
           categoryFilter &&

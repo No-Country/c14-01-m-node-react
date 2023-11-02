@@ -37,7 +37,6 @@ function SearchBar({ show, setShow }) {
     }));
   };
 
-  console.log("dates", dates);
   return (
     <>
       <Modal
