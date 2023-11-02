@@ -2,7 +2,8 @@ import getTokenToUser from "../../utils/getTokenToUser";
 import { saveTokenToLocalStorage } from "../reducers/authReducer";
 import { SIGN_UP, LOG_IN, LOG_OUT } from "./types";
 
-const BASE_URL = "http://localhost:8080/api/auth";
+//const BASE_URL = "http://localhost:8080/api/auth";
+const BASE_URL = "https://c14-01-m-node-react-production.up.railway.app/api/auth"
 
 export const signUp = (inputs) => {
   return (dispatch) => {
