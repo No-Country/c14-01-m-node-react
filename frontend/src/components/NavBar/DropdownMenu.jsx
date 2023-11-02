@@ -42,7 +42,9 @@ function DropDownMenu({ children }) {
         <Dropdown.Divider />
         <Dropdown.Item href="#/action-3">AirBnB your home</Dropdown.Item>
         {(user.token && user.token !== "undefined") || user.token ? (
-          <Dropdown.Item href="/profile/detail">Account</Dropdown.Item>
+          <Dropdown.Item as={Link} to="/profile/detail">
+            Account
+          </Dropdown.Item>
         ) : null}
       </Dropdown.Menu>
     </Dropdown>
