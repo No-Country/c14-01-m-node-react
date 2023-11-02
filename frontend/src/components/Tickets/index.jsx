@@ -5,11 +5,16 @@ import TicketCard from "../TicketCard";
 import Modal from "react-bootstrap/Modal";
 import styles from "./tickets.module.css";
 import { useJwt } from "react-jwt";
+import { HiClipboardCheck } from "react-icons/hi";
 
-export default function Tickets() {
+export default function Tickets(props) {
+  const { mobile = false } = props;
+
   const [show, setShow] = useState(false);
 
   const { token } = useSelector(state => state?.auth?.user);
+
+  const { deleteMessage, ticket } = useSelector(state => state?.tickets);
 
   const { decodedToken } = useJwt(token);
 
@@ -25,15 +30,15 @@ export default function Tickets() {
   });
 
   useEffect(() => {
-    if (decodedToken?.email) fetchGetTickets();
-  }, [decodedToken?.email]);
+    if (decodedToken?.email || deleteMessage === "reservation was successfully deleted" || ticket) fetchGetTickets();
+  }, [decodedToken?.email, deleteMessage, ticket]);
 
   const { tickets } = useSelector((state) => state);
 
   return (
     <div>
       <button className={styles.button} onClick={handleShow}>
-        Reservations
+        {mobile ? <HiClipboardCheck className="bottom-icon" /> : "Reservations"}
       </button>
 
       <Modal className={styles.modal} show={show} centered onHide={handleClose}>

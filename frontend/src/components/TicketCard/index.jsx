@@ -18,13 +18,9 @@ function parseDate(date) {
 
 export default function TicketCard(props) {
 
-  let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-
   const { title, price, image, checkinDate, checkoutDate, location, id, fetchGetTickets, guests } = props;
 
   const days = numberOfDays(checkinDate, checkoutDate);
-
-  const { deleteMessage } = useSelector(state => state?.tickets)
 
   const dispatch = useDispatch();
 
@@ -35,10 +31,6 @@ export default function TicketCard(props) {
   const handleClickDelete = () => {
     fetchDeleteTicket();
   };
-
-  useEffect(() => {
-    if (deleteMessage === "reservation was successfully deleted") fetchGetTickets();
-  }, [deleteMessage]);
 
   return (
     <Card className={styles.card}>
