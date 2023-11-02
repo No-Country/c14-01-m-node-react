@@ -34,7 +34,7 @@ export function FiltersProvider({ children }) {
     };
 
     fetchData();
-  }, [products]);
+  }, []);
 
   useEffect(() => {
     const parseToken = async (token) => {

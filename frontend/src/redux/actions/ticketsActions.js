@@ -22,7 +22,7 @@ export const sendTickets = (inputs) => {
     })
       .then((response) => response.json())
       .then((obj) => {
-        dispatch({ type: SEND_TICKET });
+        dispatch({ type: SEND_TICKET, payload: obj });
       });
   };
 };

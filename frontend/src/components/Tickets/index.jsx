@@ -14,6 +14,8 @@ export default function Tickets(props) {
 
   const { token } = useSelector(state => state?.auth?.user);
 
+  const { deleteMessage, ticket } = useSelector(state => state?.tickets);
+
   const { decodedToken } = useJwt(token);
 
   const handleClose = () => {
@@ -28,8 +30,8 @@ export default function Tickets(props) {
   });
 
   useEffect(() => {
-    if (decodedToken?.email) fetchGetTickets();
-  }, [decodedToken?.email]);
+    if (decodedToken?.email || deleteMessage === "reservation was successfully deleted" || ticket) fetchGetTickets();
+  }, [decodedToken?.email, deleteMessage, ticket]);
 
   const { tickets } = useSelector((state) => state);
 

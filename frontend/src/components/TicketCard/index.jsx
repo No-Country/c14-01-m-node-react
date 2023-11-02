@@ -22,8 +22,6 @@ export default function TicketCard(props) {
 
   const days = numberOfDays(checkinDate, checkoutDate);
 
-  const { deleteMessage } = useSelector(state => state?.tickets)
-
   const dispatch = useDispatch();
 
   const fetchDeleteTicket = useCallback(() => {
@@ -33,10 +31,6 @@ export default function TicketCard(props) {
   const handleClickDelete = () => {
     fetchDeleteTicket();
   };
-
-  useEffect(() => {
-    if (deleteMessage === "reservation was successfully deleted") fetchGetTickets();
-  }, [deleteMessage]);
 
   return (
     <Card className={styles.card}>
