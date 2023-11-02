@@ -1,0 +1,25 @@
+label {
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.modal {
+  z-index: 10000 !important;
+}
+
+.select {
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+.invalid {
+  font-size: small !important;
+}

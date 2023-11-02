@@ -1,0 +1,193 @@
+.nav-air {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  background-color: var(--white);
+}
+
+.search-air {
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-color: var(--lightgrey);
+  border-width: 1px;
+  padding: 2px 7px 2px 25px;
+  width: 506px;
+  height: 48px;
+  border-radius: 25px;
+  justify-content: space-between;
+}
+.search-air:hover {
+  box-shadow: 10px 12px 4px -6px var(--lightgrey);
+}
+
+.light-color {
+  color: var(--grey);
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.air-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.air-home:hover,
+.air-world:hover {
+  padding: 7px 10px;
+}
+
+.air-home:hover,
+.air-world:hover {
+  background-color: var(--lightgrey);
+  border-radius: 25px;
+}
+
+.dropdown-air {
+  display: flex;
+  border-radius: 25px;
+  border: 1px solid var(--lightgrey);
+}
+.dropdown-air img {
+  margin: 5px;
+  padding: 3px 5px;
+}
+
+.dropdown-toggle {
+  display: flex !important;
+  align-items: center;
+}
+
+.logged-user {
+  padding: 3px 10px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+}
+
+.modal-searchbar {
+  max-height: 20vh;
+  position: absolute;
+  z-index: 100;
+}
+
+.logo-air {
+  position: relative;
+  width: 15%;
+}
+
+.air-image {
+  width: 100%;
+  max-width: 150px;
+}
+.custom-modal {
+  position: absolute !important;
+  top: 100%;
+  left: 0;
+  z-index: 100 !important;
+}
+.modal {
+  --bs-modal-zindex: 3 !important;
+}
+.modal-backdrop.fade {
+  --bs-backdrop-zindex: 3;
+}
+
+.modal-custom-body {
+  margin-top: 75px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+/* Estilos dentro del modal */
+.search-custom-air {
+  display: flex;
+  align-items: center;
+  border-style: solid;
+  border-color: var(--lightgrey);
+  border-width: 1px;
+  padding: 5px 7px 7px 25px;
+  width: 700px;
+  height: 65px;
+  border-radius: 25px;
+  justify-content: space-around;
+  box-shadow: 10px 12px 4px -6px var(--lightgrey);
+}
+
+.input-air {
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  font-size: 8px;
+}
+
+.input-where {
+  border: none;
+  font-size: 16px;
+  width: 200px;
+}
+
+.input-air input:focus {
+  border: none;
+}
+.input-guests {
+  width: 80px;
+  border: none;
+  font-size: 16px;
+}
+
+.p-datepicker table {
+  font-size: 0.75rem;
+  width: 50%;
+  padding: 5px !important;
+}
+
+.p-datepicker-calendar tbody {
+  padding: 5px !important;
+}
+
+.p-highlight {
+  color: #fff;
+  background-color: var(--primary);
+  padding: 2px !important;
+}
+
+@media (max-width: 992px) {
+  .nav-air {
+    position: relative;
+  }
+  .air-right {
+    display: none;
+  }
+}
+
+@media (max-width: 730px) {
+  .modal-custom-body {
+    margin-top: 10px;
+  }
+  .nav-air {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .logo-air {
+    display: none;
+  }
+  .dropdown-air {
+    position: absolute;
+    top: 25px;
+  }
+  .search-custom-air {
+    height: fit-content;
+    flex-wrap: wrap;
+  }
+}

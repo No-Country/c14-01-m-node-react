@@ -1,0 +1,196 @@
+[
+  {
+    "id": 1,
+    "title": "Tiny home in San Martin de los Andes, Argentina",
+    "description": "A Viston Tiny House, 10 minutes from downtown",
+    "price": 48,
+    "location": "San Martin de los Andes",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/4d24d9a4-6acf-43c4-adbc-530f784240d8.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/fa76788a-c19f-41ff-96f5-0a37c99ffdb0.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-36942457/original/01c933ee-8ee1-440e-b760-81c860949fb1.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-36942457/original/4f73896b-e926-4225-a18b-3ad1d885755c.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-36942457/original/4f73896b-e926-4225-a18b-3ad1d885755c.jpeg?im_w=1440"
+    ],
+    "categories": ["farms", "lake", "trending"],
+    "amenities": [
+      "wifi",
+      "washer",
+      "air conditioning",
+      "kitchen",
+      "dryer",
+      "heating"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Entire cabin in Las Vegas, Argentina",
+    "description": "Mountain lodge",
+    "price": 14,
+    "location": "Las Vegas",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/20820550-3506-48b4-8b6e-80accc890688.jpeg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/5d460b03-8f7b-481a-9b79-77e991cde923.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/b42e97ed-03f0-4113-bbf9-a0c483768dbe.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/6003d21a-3f08-4006-ae09-80f49ef7159f.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/6003d21a-3f08-4006-ae09-80f49ef7159f.jpeg?im_w=1440"
+    ],
+    "categories": ["farms", "lake"],
+    "amenities": ["wifi", "kitchen", "dryer", "heating"]
+  },
+  {
+    "id": 3,
+    "title": "Entire place in Buenos Aires, Argentina",
+    "description": "Loft in Palermo with Private Heated Pool/Jacuzzi",
+    "price": 152,
+    "location": "Buenos Aires",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/40b327bc-9734-4447-a596-7fe49f52ef0b.jpeg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/80897484-d325-46c1-a714-59734057522c.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/28e1e225-5b1c-4bd2-9dcf-935320d14d22.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/1e5f50ed-74e0-4027-b90c-a65bd24fa4bb.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/1e5f50ed-74e0-4027-b90c-a65bd24fa4bb.jpeg?im_w=1440"
+    ],
+    "categories": ["farms", "lake", "trending"],
+    "amenities": ["washer", "air conditioning", "kitchen"]
+  },
+  {
+    "id": 4,
+    "title": "Entire cabin in Puerto Iguazú, Argentina",
+    "description": "Cabañas la Quinta",
+    "price": 171,
+    "location": "Puerto Iguazú",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/927505d2-2994-461c-9003-140220c9f091.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/d5ddca4d-3b84-4958-97da-c50f0ad8abac.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/22977e7d-cc2c-42d0-9c05-dd8c6cb5d7ef.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/4d368629-d071-47b0-99d0-a143bed88b9d.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/4d368629-d071-47b0-99d0-a143bed88b9d.jpg?im_w=1440"
+    ],
+    "categories": ["tropical", "camping"],
+    "amenities": ["washer", "air conditioning", "kitchen"]
+  },
+  {
+    "id": 5,
+    "title": "Tiny home in San Martin de los Andes, Argentina",
+    "description": "A Viston Tiny House, 10 minutes from downtown",
+    "price": 48,
+    "location": "San Martin de los Andes",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/4d24d9a4-6acf-43c4-adbc-530f784240d8.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/fa76788a-c19f-41ff-96f5-0a37c99ffdb0.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-36942457/original/01c933ee-8ee1-440e-b760-81c860949fb1.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-36942457/original/4f73896b-e926-4225-a18b-3ad1d885755c.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-36942457/original/4f73896b-e926-4225-a18b-3ad1d885755c.jpeg?im_w=1440"
+    ],
+    "categories": ["farms", "lake", "trending"],
+    "amenities": [
+      "wifi",
+      "washer",
+      "air conditioning",
+      "kitchen",
+      "dryer",
+      "heating"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Entire cabin in Las Vegas, Argentina",
+    "description": "Mountain lodge",
+    "price": 14,
+    "location": "Las Vegas",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/20820550-3506-48b4-8b6e-80accc890688.jpeg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/5d460b03-8f7b-481a-9b79-77e991cde923.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/b42e97ed-03f0-4113-bbf9-a0c483768dbe.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/6003d21a-3f08-4006-ae09-80f49ef7159f.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-565890048384987844/original/6003d21a-3f08-4006-ae09-80f49ef7159f.jpeg?im_w=1440"
+    ],
+    "categories": ["farms", "lake"],
+    "amenities": ["wifi", "kitchen", "dryer", "heating"]
+  },
+  {
+    "id": 7,
+    "title": "Entire place in Buenos Aires, Argentina",
+    "description": "Loft in Palermo with Private Heated Pool/Jacuzzi",
+    "price": 152,
+    "location": "Buenos Aires",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/40b327bc-9734-4447-a596-7fe49f52ef0b.jpeg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/80897484-d325-46c1-a714-59734057522c.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/28e1e225-5b1c-4bd2-9dcf-935320d14d22.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/1e5f50ed-74e0-4027-b90c-a65bd24fa4bb.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/1e5f50ed-74e0-4027-b90c-a65bd24fa4bb.jpeg?im_w=1440"
+    ],
+    "categories": ["farms", "lake", "trending"],
+    "amenities": ["washer", "air conditioning", "kitchen"]
+  },
+  {
+    "id": 8,
+    "title": "Entire cabin in Puerto Iguazú, Argentina",
+    "description": "Cabañas la Quinta",
+    "price": 171,
+    "location": "Puerto Iguazú",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/927505d2-2994-461c-9003-140220c9f091.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/d5ddca4d-3b84-4958-97da-c50f0ad8abac.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/22977e7d-cc2c-42d0-9c05-dd8c6cb5d7ef.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/4d368629-d071-47b0-99d0-a143bed88b9d.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/4d368629-d071-47b0-99d0-a143bed88b9d.jpg?im_w=1440"
+    ],
+    "categories": ["tropical", "camping"],
+    "amenities": ["washer", "air conditioning", "kitchen"]
+  },
+  {
+    "id": 9,
+    "title": "Entire place in Buenos Aires, Argentina",
+    "description": "Loft in Palermo with Private Heated Pool/Jacuzzi",
+    "price": 152,
+    "location": "Buenos Aires",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/40b327bc-9734-4447-a596-7fe49f52ef0b.jpeg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/80897484-d325-46c1-a714-59734057522c.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/28e1e225-5b1c-4bd2-9dcf-935320d14d22.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/1e5f50ed-74e0-4027-b90c-a65bd24fa4bb.jpeg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/miso/Hosting-915434687759830383/original/1e5f50ed-74e0-4027-b90c-a65bd24fa4bb.jpeg?im_w=1440"
+    ],
+    "categories": ["farms", "lake", "trending"],
+    "amenities": ["washer", "air conditioning", "kitchen"]
+  },
+  {
+    "id": 10,
+    "title": "Entire cabin in Puerto Iguazú, Argentina",
+    "description": "Cabañas la Quinta",
+    "price": 171,
+    "location": "Puerto Iguazú",
+    "initialDate": "10/10/2023",
+    "endDate": "10/12/2023",
+    "images": [
+      "https://a0.muscache.com/im/pictures/927505d2-2994-461c-9003-140220c9f091.jpg?im_w=1200",
+      "https://a0.muscache.com/im/pictures/d5ddca4d-3b84-4958-97da-c50f0ad8abac.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/22977e7d-cc2c-42d0-9c05-dd8c6cb5d7ef.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/4d368629-d071-47b0-99d0-a143bed88b9d.jpg?im_w=1440",
+      "https://a0.muscache.com/im/pictures/4d368629-d071-47b0-99d0-a143bed88b9d.jpg?im_w=1440"
+    ],
+    "categories": ["tropical", "camping"],
+    "amenities": ["washer", "air conditioning", "kitchen"]
+  }
+]

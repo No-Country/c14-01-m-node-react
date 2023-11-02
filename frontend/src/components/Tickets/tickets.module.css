@@ -1,0 +1,21 @@
+.modal {
+  z-index: 10000 !important;
+}
+
+.header button {
+  padding-right: 55px !important;
+}
+
+.body {
+  padding-top: 0px !important;
+}
+
+.button {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.message {
+  padding-top: 20px;
+}

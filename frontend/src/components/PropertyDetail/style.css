@@ -1,0 +1,149 @@
+.container-detail-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto 10%;
+}
+
+.container-detail {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.location-title {
+  font-size: 24px;
+  padding: 10px 0;
+}
+.location-subtitle {
+  font-size: 18px;
+  padding: 7px 0;
+}
+.image-container {
+  max-width: 100%;
+}
+
+.photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.container-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 10px 10px;
+  grid-template-areas:
+    "photo-0 photo-0 photo-0 photo-0 photo-1 photo-1 photo-2 photo-2"
+    "photo-0 photo-0 photo-0 photo-0 photo-1 photo-1 photo-2 photo-2"
+    "photo-0 photo-0 photo-0 photo-0 photo-3 photo-3 photo-4 photo-4"
+    "photo-0 photo-0 photo-0 photo-0 photo-3 photo-3 photo-4 photo-4";
+  max-width: 1200px;
+  max-height: 560px;
+}
+.photo-1 {
+  grid-area: photo-1;
+}
+.photo-2 {
+  grid-area: photo-2;
+}
+.photo-3 {
+  grid-area: photo-3;
+}
+.photo-4 {
+  grid-area: photo-4;
+}
+.photo-0 {
+  grid-area: photo-0;
+}
+
+.container-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 0;
+  max-width: 1200px;
+}
+
+.bottom-left {
+  width: 40%;
+}
+.bottom-right {
+  width: 30%;
+}
+
+.detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.input-detail {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0px;
+  width: 100%;
+  border-radius: 5%;
+}
+.input-detail > input {
+  width: 100%;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid var(--grey);
+  border-radius: 0px;
+}
+
+.container-image {
+  display: none;
+}
+
+.calendar-2 {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .container-detail {
+    margin-top: 20px;
+  }
+  .container-bottom {
+    flex-direction: column;
+  }
+  .bottom-left,
+  .bottom-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 730px) {
+  .card {
+    min-width: 350px;
+    width: 350px;
+    padding-left: 20px;
+    margin-bottom: 100px;
+  }
+
+  .card-body {
+    width: 80%;
+  }
+
+  .input-detail {
+    width: 280px;
+  }
+  .container-images {
+    display: none;
+  }
+  .container-image {
+    display: block;
+  }
+  .calendar-1 {
+    display: none;
+  }
+  .calendar-2 {
+    display: initial;
+  }
+}
