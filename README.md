@@ -70,7 +70,8 @@ The application seeks to offer a tool to potential users to reserve a property, 
 ### 👉🏻 Task List ✅
 
 - Development of the view through dynamic components with Javascript and React.
-- Adding style with Material UI components, tables and elements.
+- Adding style with React-Bootstrap components, tables and elements.
+- Managing central state with Redux.
 - Creating the linked routes of the page using React Router.
 - Visual and attractive animations added with Boostrap.
 - Deployed on Vercel.
